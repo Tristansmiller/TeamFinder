@@ -1,4 +1,4 @@
-function populatePage(num){
+function populatePage(k){
   for(var k=0;k<num;k++){
     populatePageGrid(k);
     populateSideBar(k);
@@ -6,12 +6,13 @@ function populatePage(num){
 }
 
 function populatePageGrid(num){
+  for(var k = 0;k<num;k++){
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="gridCell";
     outerDiv.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value=("gridCell"+num);
+    att.value=("gridCell"+k);
     outerDiv.setAttributeNode(att);
 
     var img = document.createElement("IMG");
@@ -19,7 +20,7 @@ function populatePageGrid(num){
     att.value = "cellImage";
     img.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value = ("cellImage"+num);
+    att.value = ("cellImage"+k);
     img.setAttributeNode(att);
     att = document.createAttribute("src");
     att.value = "assets/test.png";
@@ -32,22 +33,24 @@ function populatePageGrid(num){
     att.value="cellDesc";
     para.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value=("cellDesc"+num);
+    att.value=("cellDesc"+k);
     para.setAttributeNode(att);
 
     outerDiv.appendChild(img);
     outerDiv.appendChild(document.createElement("BR"));
     outerDiv.appendChild(para);
     document.getElementById("pageGrid").appendChild(outerDiv);
+  }
 }
-function populateSideBar(num){
 
+function populateSideBar(num){
+  for(var k=0;k<num;k++){
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="feedBox";
     outerDiv.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value=("feedbox"+num);
+    att.value=("feedbox"+k);
     outerDiv.setAttributeNode(att);
 
     var para = document.createElement("P");
@@ -57,10 +60,11 @@ function populateSideBar(num){
     att.value="feedBoxContent";
     para.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value = ("feedBoxContent"+num);
+    att.value = ("feedBoxContent"+k);
     para.setAttributeNode(att);
 
 
     outerDiv.appendChild(para);
     document.getElementById("sideFeed").appendChild(outerDiv);
   }
+}
