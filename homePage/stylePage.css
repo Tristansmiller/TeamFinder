@@ -10,62 +10,41 @@ div.side{
 div.topSideOptions{
   position:fixed;
   width:200px;
-  height:100px;
+  height:66.66px;
   background-clip:border-box;
 }
 body{
   background-color:rgb(55,59,68);
 }
-#topSideL{
-  position:absolute;
-  height:40px;
-  width:90px;
-  top:0px;
-  left:0px;
-  background-color:grey;
-  background-clip:content-box;
-  border: 5px outset grey;
-}
-#topSideR{
-  position:absolute;
-  height:40px;
-  width:95px;
-  left:100px;
-  top:0px;
-  background-color:gray;
-  border-width:5px;
-  border-style:outset;
-}
-#topSideU{
-  position:absolute;
-  height:40px;
-  width:195px;
-  top:50px;
-  left:0px;
-  background-color: grey;
-  border-width:5px;
-  border-style:outset;
+a.btn-primary{
+  background-color:rgb(39,60,94);
+  border-color:rgb(39,60,94);
+  color:rgb(255,255,255);
 }
 div.sideFeed{
   position:absolute;
   display:flex;
   flex-wrap:wrap;
   overflow:auto;
-  border: 5px solid darkslategray;
+  border-width:5px;
   height: 89%;
-  width:195px;
-  top:100px;
+  width:200px;
+  top:66.66px;
   left:0px;
-  background-color:black;
+  background-color:rgba(0,0,0,0);
   background-clip: content-box;
+  border-color:rgba(0,0,0,0);
 }
 div.feedBox{
   position:static;
   width:100%;
   height:100px;
-  border: 5px solid darkolivegreen;
-  background-color: darkgoldenrod;
+  border: 5px solid rgb(39,60,94);
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
   border-radius:10px;
+  padding:10%;
+  margin-bottom:25px;
 }
 p.feedBoxContent{
   margin:auto;
@@ -80,7 +59,7 @@ div.title{
   width:100%;
   position:fixed;
   top:0px;
-  left:205px;
+  left:200px;
   background: rgba(39,60,94,1);
   color: rgb(255,255,255);
   padding-left:30%;
@@ -143,7 +122,7 @@ div.filter{
   width:100%;
   position:fixed;
   top:100px;
-  left:205px;
+  left:200px;
   background:linear-gradient(rgba(39,60,94,1),rgba(39,60,94,.1));
 }
 div.pageGrid{
@@ -153,9 +132,8 @@ div.pageGrid{
   overflow:auto;
   position:fixed;                                                                                                                                 overflow:auto;
   height:87%;
-  width:100%-205px;
   top:125px;
-  left:205px;
+  left:200px;
   background-clip:content-box;
 }
 div.gridCell{
