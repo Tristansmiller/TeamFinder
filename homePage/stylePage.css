@@ -13,6 +13,9 @@ div.topSideOptions{
   height:100px;
   background-clip:border-box;
 }
+body{
+  background-color:rgb(55,59,68);
+}
 #topSideL{
   position:absolute;
   height:40px;
@@ -78,13 +81,62 @@ div.title{
   position:fixed;
   top:0px;
   left:205px;
-  background: linear-gradient(rgba(39,60,94,1),rgba(39,60,94,0.4));
-  z-index: 999;
+  background: rgba(39,60,94,1);
+  color: rgb(255,255,255);
+  padding-left:30%;
+  text-align:left;
+  z-index: 998;
   -webkit-transition: height 0.3s;
   -moz-transition: height 0.3s;
   -ms-transition: height 0.3s;
   -o-transition: height 0.3s;
   transition: height 0.3s;
+}
+
+#title-text{
+  font-family:monospace;
+  font-variant:small-caps;
+  letter-spacing:15px;
+}
+
+#loginButton{
+  position:absolute;
+  top:0%;
+  right:15%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+label{
+  color:rgb(255,255,255);
+}
+div.modal-body{
+  background-color: rgb(40,44,52);
+}
+div.modal-footer{
+  background-color: rgb(33,37,43);
+}
+p.modal-footer-text{
+  color: rgb(255,255,255);
+}
+a.modal-footer-link{
+  color: rgb(70,108,168);
+}
+#modal-close-button{
+  background-color:rgb(39,60,94);
+  border-color:rgb(39,60,94);
+}
+#usrname{
+  background-color: rgb(55,59,68);
+  color: rgb(255,255,255);
+}
+#psw{
+  background-color: rgb(55,59,68);
+  color:rgb(255,255,255);
+}
+#login-submit{
+  background-color: rgb(39,60,94);
+  border-color: rgb(39,60,94);
 }
 div.filter{
   height:21px;
@@ -92,7 +144,7 @@ div.filter{
   position:fixed;
   top:100px;
   left:205px;
-  background:rgba(39,60,94,.4);
+  background:linear-gradient(rgba(39,60,94,1),rgba(39,60,94,.1));
 }
 div.pageGrid{
   display:flex;
@@ -104,12 +156,10 @@ div.pageGrid{
   width:100%-205px;
   top:125px;
   left:205px;
-  background-color:white;
   background-clip:content-box;
 }
 div.gridCell{
   display:flex;
-  flex-wrap:wrap;
   flex-direction:column;
   align-items:center;
   position:static;
@@ -117,6 +167,7 @@ div.gridCell{
   width:250px;
   padding:30px;
   border-style:none;
+  color:rgb(255,255,255);
 }
 
 img.cellImage{
@@ -126,11 +177,11 @@ img.cellImage{
   height: 200px;
   border-collapse: collapse;
   box-shadow: 0px 0px 0px;
-  transition: box-shadow 0.1s linear 
+  transition: box-shadow 0.1s linear
 }
 
 img.cellImage:hover {
-  box-shadow: 0px 0px 30px #273c5e;
+  box-shadow: 0px 0px 30px rgb(255,255,255);
 }
 
 /*
