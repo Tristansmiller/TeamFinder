@@ -1,0 +1,346 @@
+div.side{
+  position:fixed;
+  left:0px;
+  top:0px;
+  width:200px;
+  height:100%;
+  border: 5px hidden black;
+  background-clip:content-box;
+}
+div.left-quarter-block{
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:25%;
+  height:100%;
+}
+#avatarNameBlock{
+  position:absolute;
+  top:0%;
+  left:0%;
+  margin:auto;
+  width:100%;
+  height:30%;
+  border:10px solid rgb(204,153,51);
+  border-radius:20px;
+  background-color:rgba(39,60,94,1);
+}
+#usrAvatar{
+  position:absolute;
+  top:5%;
+  left:10%;
+  width:80%;
+  height:75%;
+}
+#usrName-2{
+  position:absolute;
+  bottom:5%;
+  left:10%;
+  height:10%;
+  width:80%;
+  color:rgb(255,255,255);
+  text-align:center;
+}
+#gamesFollowedHeader{
+  position:absolute;
+  top:37%;
+  left:7%;
+  height:3%;
+  width:90%;
+  color:rgb(255,255,255);
+  font-size:20px;
+  font-weight:bold;
+}
+#usrGamesFollowed{
+  position:absolute;
+  top:40%;
+  left:5%;
+  height:60%;
+  width:90%;
+  border:10px solid rgb(204,153,51);
+  border-radius:20px;
+  background-color:rgb(255,255,255);
+}
+div.middle-half-block{
+  position:absolute;
+  left:25%;
+  top:0px;
+  width:50%;
+  height:100%;
+}
+#ratingBlock{
+  position:absolute;
+  left:5%;
+  top:1.5%;
+  width:45%;
+  height:10%;
+}
+#bioHeader{
+  position:absolute;
+  top:13.5%;
+  left:7%;
+  height:3%;
+  width:90%;
+  color:rgb(255,255,255);
+  font-size:20px;
+  font-weight:bold;
+}
+#usrBio{
+  position:absolute;
+  left:5%;
+  top:16.5%;
+  height:83.5%;
+  width:80%;
+  border:10px solid rgb(204,153,51);
+  border-radius:20px;
+  background-color:rgb(255,255,255);
+}
+div.right-quarter-block{
+  position:absolute;
+  right:0px;
+  top:0px;
+  width:25%;
+  height:100%;
+}
+#recentAdsHeader{
+  position:absolute;
+  top:7%;
+  left:7%;
+  height:3%;
+  width:90%;
+  color:rgb(255,255,255);
+  font-size:20px;
+  font-weight:bold;
+}
+#usrRecentAds{
+  position:absolute;
+  left:5%;
+  top:10%;
+  width:90%;
+  height:90%;
+  border:10px solid rgb(204,153,51);
+  border-radius:20px;
+  background-color:rgb(255,255,255);
+}
+div.topSideOptions{
+  position:fixed;
+  width:200px;
+  height:66.66px;
+  background-clip:border-box;
+  background-color:rgb(39,60,94);
+}
+.side{
+  background-color:rgb(40,44,52);
+}
+body{
+  background-color:rgb(55,59,68);
+}
+a.btn-primary{
+  background-color:rgb(39,60,94);
+  border-color:rgb(39,60,94);
+  color:rgb(255,255,255);
+}
+
+.account-pages-btn-group{
+  position:absolute;
+  bottom:0px;
+  left:0px;
+}
+a.btn-primary:hover{
+  background-color:rgb(204,153,51);
+  border-color:rgb(204,153,51);
+}
+a.btn-primary:focus{
+  background-color:rgb(204,153,51);
+  border-color:rgb(204,153,51);
+}
+
+div.sideFeed{
+  position:absolute;
+  display:flex;
+  flex-wrap:wrap;
+  overflow:auto;
+  border-width:5px;
+  height: 89%;
+  width:200px;
+  top:66.66px;
+  left:0px;
+  background-color:rgba(0,0,0,0);
+  background-clip: content-box;
+  border-color:rgba(0,0,0,0);
+}
+div.feedBox{
+  position:static;
+  width:100%;
+  height:100px;
+  border: 5px solid rgb(204,153,51);
+  background-color: rgb(240,240,240);
+  color:rgb(0,0,0);
+  border-radius:10px;
+  padding:10%;
+  margin-bottom:25px;
+}
+p.feedBoxContent{
+  margin:auto;
+}
+div.pageBody{
+  position:absolute;
+  left:0%;
+  top:100px;
+  width:100%;
+  height:100%;
+
+}
+#account-page-iframe{
+  position:absolute;
+  height:100%;
+  width:100%;
+  border-style:none;
+}
+div.title{
+  height:100px;
+  width:100%;
+  position:fixed;
+  top:0px;
+  left:0px;
+  background: rgba(39,60,94,1);
+  color: rgb(255,255,255);
+  padding-left:30%;
+  text-align:left;
+  z-index: 998;
+  -webkit-transition: height 0.3s;
+  -moz-transition: height 0.3s;
+  -ms-transition: height 0.3s;
+  -o-transition: height 0.3s;
+  transition: height 0.3s;
+}
+
+#title-text{
+  font-family:monospace;
+  font-variant:small-caps;
+  letter-spacing:15px;
+}
+#titleImage{
+  position:absolute;
+  height:100px;
+  width:400px;
+  top:-10%;
+  left:0%;
+}
+
+#loginButton{
+  position:absolute;
+  top:0%;
+  right:15%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+#loginButton:hover{
+  background-color:rgb(204,153,51);
+}
+
+label{
+  color:rgb(255,255,255);
+}
+div.modal-body{
+  background-color: rgb(40,44,52);
+}
+div.modal-footer{
+  background-color: rgb(33,37,43);
+}
+p.modal-footer-text{
+  color: rgb(255,255,255);
+}
+a.modal-footer-link{
+  color: rgb(70,108,168);
+}
+a.modal-footer-link:hover{
+  color: rgb(204,153,51)
+}
+#modal-close-button{
+  background-color:rgb(204,28,51);
+  border-color:rgb(204,28,51);
+}
+#usrname{
+  background-color: rgb(55,59,68);
+  color: rgb(255,255,255);
+}
+#psw{
+  background-color: rgb(55,59,68);
+  color:rgb(255,255,255);
+}
+#login-submit{
+  background-color: rgb(39,60,94);
+  border-color: rgb(39,60,94);
+}
+#login-submit:hover{
+  background-color:rgb(204,153,51);
+
+}
+div.filter{
+  height:21px;
+  width:100%;
+  position:fixed;
+  top:100px;
+  left:200px;
+  background:rgb(39,60,94)
+}
+div.pageGrid{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  overflow:auto;
+  position:fixed;                                                                                                                                 overflow:auto;
+  height:87%;
+  top:125px;
+  left:200px;
+  background-clip:content-box;
+}
+div.gridCell{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:static;
+  height:250px;
+  width:250px;
+  padding:30px;
+  border-style:none;
+  color:rgb(255,255,255);
+}
+
+img.cellImage{
+  border-radius:25px;
+  margin:auto;
+  width: 200px;
+  height: 200px;
+  border-collapse: collapse;
+  box-shadow: 0px 0px 0px;
+  transition: box-shadow 0.1s linear
+}
+
+img.cellImage:hover {
+  box-shadow: 0px 0px 30px rgb(204,153,51);
+}
+
+/*
+@keyframes hoverImage{
+  from{box-shadow: 0px 0px 0px;}
+  to{box-shadow: 0px 0px 30px #273c5e;}
+}
+img.cellImage:hover{
+  animation-name:hoverImage;
+  animation-duration:.5s;
+  animation-fill-mode:forwards;
+}*/
+
+
+p.cellDesc{
+  margin:auto;
+}
+img.testImage{
+  margin:auto;
+  width: 100%;
+  height: 100%;
+  border-collapse: collapse;
+}
