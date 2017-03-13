@@ -1,0 +1,80 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="stylePage.css">
+  <style>
+  </style>
+</head>
+
+<body >
+  <div class="side">
+    <div class="topSideOptions">
+      <div id="account-friends-group" class="btn-group btn-group-justified">
+        <a id="account-link" href="#" class="btn btn-primary">Account</a>
+        <a id="friends-link" href="#" class="btn btn-primary">Friends</a>
+      </div>
+      <a id="my-ads-link" href="#" class="btn btn-primary btn-block">My Ads</a>
+    </div>
+    <div class="sideFeed" id="sideFeed">
+      <script language="javascript" src="./test.js" onload="populateSideBar(15)"></script>
+    </div>
+  </div>
+  <div class="pageBody">
+    <div class="title">
+        <!-- Trigger the modal with a button -->
+        <button type="button" id="loginButton" class="btn btn-info btn" data-toggle="modal" data-target="#loginModal" data-backdrop="false">Login</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="loginModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="padding:40px 50px;">
+                  <form role="form">
+                    <div class="form-group">
+                      <label for="usrname">Username</label>
+                      <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                      <label for="psw">Password</label>
+                      <input type="password" class="form-control" id="psw" placeholder="Enter password">
+                    </div>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="">Remember me</label>
+                    </div>
+                      <button id="login-submit" type="submit" class="btn btn-success btn-block"> Login</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button id="modal-close-button" type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Close</button>
+                  <p class="modal-footer-text">Not a member? <a class="modal-footer-link" href="#">Sign Up</a></p>
+                  <p class="modal-footer-text">Forgot <a class="modal-footer-link" href="#">Password?</a></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        <img id="titleImage" src="assets/titleImage3.png">
+        <div id="titleImgBox">
+          <img id="gameImage" src="assets/test.png">
+          <h1 id="gameName">[Title]</h1>
+        </div>
+        <div id="titleLoginBox">
+        </div>
+      </div>
+    <div class="filter">
+    </div>
+    <div class="pageList" id="pageList">
+      <script language="javascript" src="./test.js" onload="populatePageList(10)"></script>
+    </div>
+  </div>
+</body>
+</html>
