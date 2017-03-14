@@ -87,8 +87,25 @@ div.title{
 }
 #titleImage{
   position:absolute;
-  top:-40%;
-  left:10%;
+  top:-20%;
+  left:-1%;
+  width: 600px;
+  height: auto;
+}
+
+#gameImage{
+  position:absolute;
+  top:10%;
+  left:40%;
+  width:100px;
+  height:auto;
+  border-radius: 25px;
+}
+
+#gameName{
+  position:absolute;
+  top:15%;
+  left:47%;
 }
 
 #loginButton{
@@ -149,41 +166,61 @@ div.filter{
   left:200px;
   background:rgb(39,60,94)
 }
-div.pageGrid{
+div.pageList{
   display:flex;
   flex-wrap:wrap;
   justify-content: center;
   overflow:auto;
   position:fixed;                                                                                                                                 overflow:auto;
   height:87%;
+  width:90%;
   top:125px;
   left:200px;
   background-clip:content-box;
 }
-div.gridCell{
+div.listNode{
   display:flex;
-  flex-direction:column;
-  align-items:center;
-  position:static;
+  flex-direction:row;
+  align-items:left;
+  position:auto;
   height:250px;
-  width:250px;
-  padding:30px;
-  border-style:none;
+  width:100%;
+  padding-top:40px;
+  padding-left:50px;
+  border:5px solid black;
+  border-bottom-style: none;
   color:rgb(255,255,255);
-}
-
-img.cellImage{
-  border-radius:25px;
-  margin:auto;
-  width: 200px;
-  height: 200px;
-  border-collapse: collapse;
   box-shadow: 0px 0px 0px rgb(204,153,51);
   transition: box-shadow 0.1s linear
 }
 
-img.cellImage:hover {
-  box-shadow: 0px 0px 30px rgb(204,153,51);
+div.imageNode {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5px;
+}
+
+#listUSR {
+  padding-top:10px;
+  text-align: center;
+}
+
+div.listInfo {
+  padding-left:15px;
+}
+
+#listImage{
+  border-radius:25px;
+  margin:auto;
+  width: 150px;
+  height: 150px;
+  border-collapse: collapse;
+  
+}
+
+div.listNode:hover {
+  /*box-shadow: 0px 0px 30px rgb(204,153,51);*/
+  background-color: #686868;
 }
 
 /*
