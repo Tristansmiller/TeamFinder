@@ -28,6 +28,9 @@ a.btn-primary{
 a.btn-primary:hover{
   background-color:rgb(204,153,51);
 }
+a.btn-primary:focus{
+  background-color:rgb(204,153,51);
+}
 
 div.sideFeed{
   position:absolute;
@@ -122,8 +125,8 @@ a.modal-footer-link:hover{
   color: rgb(204,153,51)
 }
 #modal-close-button{
-  background-color:rgb(204,28,51);
-  border-color:rgb(204,28,51);
+  background-color:rgb(168,21,21);
+  border-color:rgb(168,21,21);
 }
 #usrname{
   background-color: rgb(55,59,68);

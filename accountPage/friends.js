@@ -7,7 +7,7 @@ function populateFriends(num){
     att = document.createAttribute("id");
     att.value=("friend-block"+k);
     friendBlock.setAttributeNode(att);
-    friendBlock.style.top=(""+(22.5*(k-1)+5)+"%")
+    friendBlock.style.top=(""+(27.5*(k-1)+5)+"%")
 
     var leftQuarterDiv = document.createElement("DIV");
     att = document.createAttribute("class");
