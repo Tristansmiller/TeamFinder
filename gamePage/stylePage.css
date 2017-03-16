@@ -218,9 +218,24 @@ div.listInfo {
   
 }
 
+div.listInfo {
+  display: flex;
+  flex-direction: row;
+}
+
 div.listNode:hover {
   /*box-shadow: 0px 0px 30px rgb(204,153,51);*/
   background-color: #686868;
+}
+
+button.applyButton {
+  position:absolute;
+  top: 20%;
+  right:82%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+
 }
 
 /*
