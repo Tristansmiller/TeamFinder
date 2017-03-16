@@ -270,11 +270,11 @@ a.modal-footer-link:hover{
   background-color: rgb(55,59,68);
   color:rgb(255,255,255);
 }
-#login-submit{
+.submit{
   background-color: rgb(39,60,94);
   border-color: rgb(39,60,94);
 }
-#login-submit:hover{
+.submit:hover{
   background-color:rgb(204,153,51);
 
 }
@@ -480,4 +480,43 @@ img.testImage{
   left:25%;
   border-left:5px solid rgb(204,153,51);
   padding:5px;
+}
+#settingsHeader{
+  position:absolute;
+  width:25%;
+  height:10%;
+  top:0%;
+  left:3%;
+  padding-top:30px;
+  font-size:30px;
+  border-bottom:3px solid rgb(255,255,255);
+  border-radius:3px;
+  color:white;
+  text-align:justify;
+}
+.settings-container{
+  position:absolute;
+  width:60%;
+  height:85%;
+  left:5%;
+  top:15%;
+  background-color:rgb(40,44,52);
+}
+.setting-block{
+  width:100%;
+  left:0%;
+  border-bottom:3px solid rgb(55,59,68);
+  color:rgb(255,255,255);
+  border-radius:3px;
+  padding:25px;
+}
+#settings-submit{
+  margin:25px;
+  width:25%;
+}
+.tall{
+  height:30%;
+}
+.short{
+  height:15%;
 }
