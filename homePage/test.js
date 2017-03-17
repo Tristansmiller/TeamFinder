@@ -4,7 +4,6 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
-
 function populatePageGrid(num){
   for(var k = 0;k<num;k++){
     var outerDiv=document.createElement("DIV");
