@@ -14,6 +14,10 @@ function populatePageGrid(num){
     att.value=("gridCell"+k);
     outerDiv.setAttributeNode(att);
 
+    var imgLink = document.createElement("A");
+    att = document.createAttribute("href");
+    att.value = "../gamePage/index.html";
+    imgLink.setAttributeNode(att);
     var img = document.createElement("IMG");
     att = document.createAttribute("class");
     att.value = "cellImage";
@@ -24,6 +28,7 @@ function populatePageGrid(num){
     att = document.createAttribute("src");
     att.value = "assets/test.png";
     img.setAttributeNode(att);
+    imgLink.appendChild(img);
 
     var para = document.createElement("P");
     var content = document.createTextNode("TEST DESC");
@@ -35,7 +40,7 @@ function populatePageGrid(num){
     att.value=("cellDesc"+k);
     para.setAttributeNode(att);
 
-    outerDiv.appendChild(img);
+    outerDiv.appendChild(imgLink);
     outerDiv.appendChild(document.createElement("BR"));
     outerDiv.appendChild(para);
     document.getElementById("pageGrid").appendChild(outerDiv);
