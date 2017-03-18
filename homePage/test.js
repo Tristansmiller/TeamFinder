@@ -4,8 +4,8 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
-function populatePageGrid(num){
-  for(var k = 0;k<num;k++){
+function populatePageGrid(array){
+  for(var k = 0;k<array.length;k++){
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="gridCell";
@@ -26,12 +26,12 @@ function populatePageGrid(num){
     att.value = ("cellImage"+k);
     img.setAttributeNode(att);
     att = document.createAttribute("src");
-    att.value = "assets/test.png";
+    att.value = array[k].picture;
     img.setAttributeNode(att);
     imgLink.appendChild(img);
 
     var para = document.createElement("P");
-    var content = document.createTextNode("TEST DESC");
+    var content = document.createTextNode(array[k].name);
     para.appendChild(content);
     att = document.createAttribute("class");
     att.value="cellDesc";
