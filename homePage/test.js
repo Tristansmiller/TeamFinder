@@ -16,7 +16,7 @@ function populatePageGrid(array){
 
     var imgLink = document.createElement("A");
     att = document.createAttribute("href");
-    att.value = "../gamePage/index.html";
+    att.value = "../gamePage/index.php?id="+array[k].gameID;
     imgLink.setAttributeNode(att);
     var img = document.createElement("IMG");
     att = document.createAttribute("class");

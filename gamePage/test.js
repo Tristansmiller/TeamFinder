@@ -5,8 +5,8 @@ function populatePage(k){
   }
 }
 
-function populatePageList(num){
-  for(var k = 0;k<num;k++){
+function populatePageList(array){
+  for(var k = 0;k<array.length;k++){
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="listNode";
@@ -34,7 +34,7 @@ function populatePageList(num){
     imgNode.appendChild(img);
 
     var para = document.createElement("P");
-    var content = document.createTextNode("USERNAME");
+    var content = document.createTextNode(array[k].userID);
     para.appendChild(content);
     att = document.createAttribute("class");
     att.value="listUSR";
@@ -52,7 +52,7 @@ function populatePageList(num){
     att.value = "listInfo"+k;
     info.setAttributeNode(att);
     var p = document.createElement("P");
-    var cont = document.createTextNode("AD INFO");
+    var cont = document.createTextNode(array[k].description);
     p.appendChild(cont);
     att = document.createAttribute("class");
     att.value="listInfoP";
