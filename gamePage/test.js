@@ -24,6 +24,10 @@ function populatePageList(num){
     imgNode.setAttributeNode(att);
     outerDiv.appendChild(imgNode);
 
+    var imgLink = document.createElement("A");
+    att = document.createAttribute("href");
+    att.value = "../accountPage/indexP.html";
+    imgLink.setAttributeNode(att);
     var img = document.createElement("IMG");
     att = document.createAttribute("id");
     att.value = ("listImage");
@@ -31,7 +35,8 @@ function populatePageList(num){
     att = document.createAttribute("src");
     att.value = "assets/test.png";
     img.setAttributeNode(att);
-    imgNode.appendChild(img);
+    imgLink.appendChild(img);
+    imgNode.appendChild(imgLink);
 
     var para = document.createElement("P");
     var content = document.createTextNode("USERNAME");
@@ -51,29 +56,29 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value = "listInfo"+k;
     info.setAttributeNode(att);
-    var p = document.createElement("P");
-    var cont = document.createTextNode("AD INFO");
-    p.appendChild(cont);
+    var h2 = document.createElement("H2");
+    var cont = document.createTextNode("AD TITLE");
+    h2.appendChild(cont);
     att = document.createAttribute("class");
     att.value="listInfoP";
     para.setAttributeNode(att);
     att = document.createAttribute("id");
     att.value=("listInfoP"+k);
-    p.setAttributeNode(att);
-    info.appendChild(p);
+    h2.setAttributeNode(att);
+    info.appendChild(h2);
 
     var but = document.createElement("BUTTON");
     att = document.createAttribute("class");
-    att.value = "applyButton";
+    att.value = "btn btn-apply btn";
     but.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value = "applyButton"+k;
+    att.value = "applyButton";
     but.setAttributeNode(att);
     att = document.createAttribute("type");
     att.value = "button";
     but.setAttributeNode(att);
-    but.textContent = "apply";
-    but.style.color = "black";
+    but.textContent = "Apply";
+    but.style.color = "white";
     info.appendChild(but);
     
     outerDiv.appendChild(info);

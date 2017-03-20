@@ -158,6 +158,19 @@ a.modal-footer-link:hover{
   background-color:rgb(204,153,51);
 
 }
+
+#createButton{
+  position:absolute;
+  top:0%;
+  right:20%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+#createButton:hover{
+  background-color:rgb(204,153,51);
+}
+
 div.filter{
   height:21px;
   width:100%;
@@ -206,7 +219,17 @@ div.imageNode {
 }
 
 div.listInfo {
+  position:absolute;
   padding-left:15px;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  width: 83%;
+}
+
+div.listNode:hover {
+  /*box-shadow: 0px 0px 30px rgb(204,153,51);*/
+  background-color: #686868;
 }
 
 #listImage{
@@ -218,44 +241,31 @@ div.listInfo {
   
 }
 
-div.listInfo {
-  display: flex;
-  flex-direction: row;
-}
-
-div.listNode:hover {
-  /*box-shadow: 0px 0px 30px rgb(204,153,51);*/
-  background-color: #686868;
-}
-
-button.applyButton {
-  position:absolute;
-  top: 20%;
-  right:82%;
-  background-color: rgb(40,44,52);
-  color:rgb(255,255,255);
-  border-color:rgb(40,44,52);
-
-}
-
-/*
-@keyframes hoverImage{
-  from{box-shadow: 0px 0px 0px;}
-  to{box-shadow: 0px 0px 30px #273c5e;}
-}
-img.cellImage:hover{
+#listImage:hover {
   animation-name:hoverImage;
   animation-duration:.5s;
   animation-fill-mode:forwards;
-}*/
+  box-shadow: 0px 0px 30px rgb(204,153,51);
+}
 
+#applyButton {
+  position:absolute;
+  top: 10%;
+  left:150px;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+
+#applyButton:hover {
+    background-color:rgb(204,153,51);
+}
+
+@keyframes hoverImage{
+  from{box-shadow: 0px 0px 0px;}
+  to{box-shadow: 0px 0px 30px rgb(204,153,51);}
+}
 
 p.cellDesc{
   margin:auto;
-}
-img.testImage{
-  margin:auto;
-  width: 100%;
-  height: 100%;
-  border-collapse: collapse;
 }
