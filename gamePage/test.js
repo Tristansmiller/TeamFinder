@@ -65,7 +65,7 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value=("listInfoP"+k);
     h2.setAttributeNode(att);
-    info.appendChild(h2);
+    
 
     var but = document.createElement("BUTTON");
     att = document.createAttribute("class");
@@ -79,7 +79,8 @@ function populatePageList(num){
     but.setAttributeNode(att);
     but.textContent = "Apply";
     but.style.color = "white";
-    info.appendChild(but);
+    h2.appendChild(but);
+    info.appendChild(h2);
     
     outerDiv.appendChild(info);
 
