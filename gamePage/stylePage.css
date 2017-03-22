@@ -62,6 +62,21 @@ div.pageBody{
   left:205;
 
 }
+
+div.currentUser {
+  position:absolute;
+  height:3%;
+  width:100%;
+  background: rgb(204,153,51);
+  bottom:0px;
+}
+
+#currentUser {
+  padding:2px;
+  padding-left:2px;
+  height:100%;
+}
+
 div.title{
   height:100px;
   width:100%;
@@ -94,18 +109,18 @@ div.title{
 }
 
 #gameImage{
-  position:absolute;
-  top:10%;
-  left:40%;
+  position: fixed;
+  top: 10px;
+  left: 60%;
   width:100px;
   height:auto;
   border-radius: 25px;
 }
 
 #gameName{
-  position:absolute;
-  top:15%;
-  left:47%;
+  position:fixed;
+  top:10px;
+  left:70%;
 }
 
 #loginButton{
@@ -158,6 +173,19 @@ a.modal-footer-link:hover{
   background-color:rgb(204,153,51);
 
 }
+
+#createButton{
+  position:absolute;
+  top:0%;
+  right:20%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+#createButton:hover{
+  background-color:rgb(204,153,51);
+}
+
 div.filter{
   height:21px;
   width:100%;
@@ -187,6 +215,8 @@ div.listNode{
   width:100%;
   padding-top:40px;
   padding-left:50px;
+  padding-bottom: 40px;
+  padding-right:50px;
   border:5px solid black;
   border-bottom-style: none;
   color:rgb(255,255,255);
@@ -206,7 +236,22 @@ div.imageNode {
 }
 
 div.listInfo {
+  position:relative;
   padding-left:15px;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  width: 83%;
+}
+
+.h2 {
+  display:flex;
+  width:50px;
+}
+
+div.listNode:hover {
+  /*box-shadow: 0px 0px 30px rgb(204,153,51);*/
+  background-color: #686868;
 }
 
 #listImage{
@@ -218,44 +263,30 @@ div.listInfo {
   
 }
 
-div.listInfo {
-  display: flex;
-  flex-direction: row;
-}
-
-div.listNode:hover {
-  /*box-shadow: 0px 0px 30px rgb(204,153,51);*/
-  background-color: #686868;
-}
-
-button.applyButton {
-  position:absolute;
-  top: 20%;
-  right:82%;
-  background-color: rgb(40,44,52);
-  color:rgb(255,255,255);
-  border-color:rgb(40,44,52);
-
-}
-
-/*
-@keyframes hoverImage{
-  from{box-shadow: 0px 0px 0px;}
-  to{box-shadow: 0px 0px 30px #273c5e;}
-}
-img.cellImage:hover{
+#listImage:hover {
   animation-name:hoverImage;
   animation-duration:.5s;
   animation-fill-mode:forwards;
-}*/
+  box-shadow: 0px 0px 30px rgb(204,153,51);
+}
 
+#applyButton {
+  position:relative;
+  height:20%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+
+#applyButton:hover {
+    background-color:rgb(204,153,51);
+}
+
+@keyframes hoverImage{
+  from{box-shadow: 0px 0px 0px;}
+  to{box-shadow: 0px 0px 30px rgb(204,153,51);}
+}
 
 p.cellDesc{
   margin:auto;
-}
-img.testImage{
-  margin:auto;
-  width: 100%;
-  height: 100%;
-  border-collapse: collapse;
 }
