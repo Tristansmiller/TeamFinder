@@ -1,3 +1,6 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
 div.side{
   position:fixed;
   left:0px;
@@ -35,7 +38,7 @@ div.sideFeed{
   flex-wrap:wrap;
   overflow:auto;
   border-width:5px;
-  height: 89%;
+  height: 92%;
   width:200px;
   top:66.66px;
   left:0px;
@@ -65,15 +68,16 @@ div.pageBody{
 
 div.currentUser {
   position:absolute;
-  height:3%;
+  height:30px;
   width:100%;
   background: rgb(204,153,51);
   bottom:0px;
 }
 
-#currentUser {
-  padding:2px;
-  padding-left:2px;
+#currentUserText {
+  position:absolute;
+  padding-top:2%;
+  padding-left:15%;
   height:100%;
 }
 
@@ -200,7 +204,7 @@ div.pageList{
   justify-content: center;
   overflow:auto;
   position:fixed;                                                                                                                                 overflow:auto;
-  height:87%;
+  height:93%;
   width:90%;
   top:125px;
   left:200px;

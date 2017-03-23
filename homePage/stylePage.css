@@ -1,3 +1,6 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
 div.side{
   position:fixed;
   left:0px;
@@ -38,7 +41,7 @@ div.sideFeed{
   flex-wrap:wrap;
   overflow:auto;
   border-width:5px;
-  height: 89%;
+  height: 92%;
   width:200px;
   top:66.66px;
   left:0px;
@@ -142,7 +145,6 @@ a.modal-footer-link:hover{
 }
 #login-submit:hover{
   background-color:rgb(204,153,51);
-
 }
 div.filter{
   height:21px;
@@ -158,7 +160,7 @@ div.pageGrid{
   justify-content: center;
   overflow:auto;
   position:fixed;                                                                                                                                 overflow:auto;
-  height:87%;
+  height:93%;
   top:125px;
   left:200px;
   background-clip:content-box;
@@ -207,23 +209,25 @@ img.cellImage:hover {
     padding: 12px 20px 12px 40px;
     transition: width 0.4s ease-in-out;
 }
-
 #searchBar:focus {
     width: 20%;
     background-color: antiquewhite;
 }
 
-/*
-@keyframes hoverImage{
-  from{box-shadow: 0px 0px 0px;}
-  to{box-shadow: 0px 0px 30px #273c5e;}
+div.currentUser {
+  position:absolute;
+  height:30px;
+  width:100%;
+  background: rgb(204,153,51);
+  bottom:0px;
 }
-img.cellImage:hover{
-  animation-name:hoverImage;
-  animation-duration:.5s;
-  animation-fill-mode:forwards;
-}*/
 
+#currentUser {
+  position:absolute;
+  padding-top:2%;
+  padding-left:15%;
+  height:100%;
+}
 
 p.cellDesc{
   margin:auto;

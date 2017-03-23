@@ -4,7 +4,17 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
-
+function loggedAs(name) {
+    var user = name;
+    var p = document.createElement("P");
+    var content = document.createTextNode("Logged in as "+name);
+    p.appendChild(content);
+    var att = document.createAttribute("id");
+    att.value = "currentUserText";
+    p.setAttributeNode(att);
+    
+    document.getElementById("currentUserBox").appendChild(p);
+}
 function populatePageList(num){
   for(var k = 0;k<num;k++){
     var outerDiv=document.createElement("DIV");
@@ -33,7 +43,7 @@ function populatePageList(num){
     att.value = ("listImage");
     img.setAttributeNode(att);
     att = document.createAttribute("src");
-    att.value = "assets/test.png";
+    att.value = "assets/testAvatar.png";
     img.setAttributeNode(att);
     imgLink.appendChild(img);
     imgNode.appendChild(imgLink);

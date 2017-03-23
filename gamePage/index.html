@@ -23,10 +23,8 @@
       <a id="my-ads-link" href="../accountPage/indexM.html" class="btn btn-primary btn-block">My Ads</a>
     </div>
     <div class="sideFeed" id="sideFeed">
-      <script language="javascript" src="./test.js" onload="populateSideBar(15)"></script>
     </div>
-    <div class="currentUser">
-      <p id="currentUser">Logged in as USER1</p>
+    <div class="currentUser" id="currentUserBox">
     </div>
   </div>
   <div class="pageBody">
@@ -112,7 +110,7 @@
     <div class="filter">
     </div>
     <div class="pageList" id="pageList">
-      <script language="javascript" src="./test.js" onload="populatePageList(10)"></script>
+      <script language="javascript" src="./testGame.js" onload="populatePageList(10);populateSideBar(15);loggedAs('USER1');"></script>
     </div>
   </div>
 </body>
