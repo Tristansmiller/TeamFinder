@@ -5,6 +5,9 @@ function populatePage(k){
   }
 }
 
+function adjustPage(){
+  document.getElementById("pageBody").style.width=""+(screen.width)-205+"px";
+}
 function populatePageList(num){
   for(var k = 0;k<num;k++){
     var outerDiv=document.createElement("DIV");
@@ -14,6 +17,7 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value=("listNode"+k);
     outerDiv.setAttributeNode(att);
+    outerDiv.style.top=""+(250*k)+"px";
 
     var imgNode = document.createElement("DIV");
     att = document.createAttribute("class");
@@ -24,14 +28,21 @@ function populatePageList(num){
     imgNode.setAttributeNode(att);
     outerDiv.appendChild(imgNode);
 
+    var imgLink = document.createElement("A");
+    att = document.createAttribute("href");
+    att.value = "../accountPage/indexP.html";
+    imgLink.setAttributeNode(att);
     var img = document.createElement("IMG");
-    att = document.createAttribute("id");
-    att.value = ("listImage");
+    att = document.createAttribute("class");
+    att.value = "listImage";
     img.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value = "listImage"+k;
     att = document.createAttribute("src");
     att.value = "assets/test.png";
     img.setAttributeNode(att);
-    imgNode.appendChild(img);
+    imgLink.appendChild(img);
+    imgNode.appendChild(imgLink);
 
     var para = document.createElement("P");
     var content = document.createTextNode("USERNAME");
@@ -40,7 +51,7 @@ function populatePageList(num){
     att.value="listUSR";
     para.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value=("listUSR");
+    att.value=("listUSR"+k);
     para.setAttributeNode(att);
     imgNode.appendChild(para);
 
@@ -51,32 +62,33 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value = "listInfo"+k;
     info.setAttributeNode(att);
-    var p = document.createElement("P");
-    var cont = document.createTextNode("AD INFO");
-    p.appendChild(cont);
+    var h2 = document.createElement("H2");
+    var cont = document.createTextNode("AD TITLE");
+    h2.appendChild(cont);
     att = document.createAttribute("class");
     att.value="listInfoP";
-    para.setAttributeNode(att);
+    h2.setAttributeNode(att);
     att = document.createAttribute("id");
     att.value=("listInfoP"+k);
-    p.setAttributeNode(att);
-    info.appendChild(p);
+    h2.setAttributeNode(att);
+
 
     var but = document.createElement("BUTTON");
     att = document.createAttribute("class");
-    att.value = "applyButton";
+    att.value = "btn btn-apply btn";
     but.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value = "applyButton"+k;
+    att.value = "applyButton";
     but.setAttributeNode(att);
     att = document.createAttribute("type");
     att.value = "button";
     but.setAttributeNode(att);
-    but.textContent = "apply";
-    but.style.color = "black";
-    info.appendChild(but);
-    
+    but.textContent = "Apply";
+    but.style.color = "white";
+
+    info.appendChild(h2);
     outerDiv.appendChild(info);
+    outerDiv.appendChild(but);
 
     /*outerDiv.appendChild(img);
     outerDiv.appendChild(document.createElement("BR"));
