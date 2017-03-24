@@ -1,42 +1,50 @@
 function loggedAs(name) {
     var user = name;
-    var p = document.createElement("P");
-    var content = document.createTextNode("Logged in as "+name);
-    p.appendChild(content);
-    var att = document.createAttribute("id");
-    att.value = "currentUser";
-    p.setAttributeNode(att);
-    document.getElementById("currentUserBox").appendChild(p);
+    var userText = createParagraph("currentUserText","Logged in as "+name,0);
+    document.getElementById("currentUserBox").appendChild(userText);
 }
 
-function searchPage(num, filter) {
-  for(var k = 0; k < num; k++) {
-    var ele = document.getElementById("gridCell"+k);
-    var desc = document.getElementById("cellDesc"+k).innerHTML;
-    if (filter=="") {ele.style.display = "flex"}
-    else if(!desc.toLowerCase().includes(filter.toLowerCase())) {ele.style.display = "none";}
-    else ele.style.display = "flex";
-  }
+function adjustPage(){
+  document.getElementById("pageBody").style.width=""+(screen.width)-205+"px";
 }
 
-function populatePageGrid(array){
-  for(var k = 0;k<array.length;k++){
-    var outerDiv = createDiv("gridCell",k);
+function populateSideBar(num){
+  for(var k=0;k<num;k++){
+    var outerDiv= createDiv("feedBox",k);
 
-    var imgLink = createLink("cellImageLink","../gamePage/index.html",k);
-    var img = createImage("cellImage",array[k].picture,k);
-    imgLink.appendChild(img);
-    outerDiv.appendChild(imgLink);
-
-    outerDiv.appendChild(document.createElement("BR"))//creates a line break to align elements properly
-
-    var para = createParagraph("cellDesc",array[k].name,k);
+    var para = createParagraph("feedBoxContent","TEST",k);
     outerDiv.appendChild(para);
 
-    document.getElementById("pageGrid").appendChild(outerDiv);
+    document.getElementById("sideFeed").appendChild(outerDiv);
   }
 }
 
+function populatePageList(num){
+  for(var k = 0;k<num;k++){
+    var outerDiv = createDiv("listNode",k);
+    var imgNode = createDiv("imageNode",k);
+    outerDiv.appendChild(imgNode);
+
+    var imgLink = createLink("imgLink","../accountPage/indexP.html",k);
+    var img = createImage("listImage","assets/test.png",k);
+    imgLink.appendChild(img);
+    imgNode.appendChild(imgLink);
+
+    var para = createParagraph("listUSR","USERNAME",k);
+    imgNode.appendChild(para);
+
+    var info = createDiv("listInfo",k);
+    outerDiv.appendChild(info);
+
+    var h2 = createHeader("listInfoP","AD TITLE",2,k);
+    info.appendChild(h2);
+
+    var but = createButton("applyButton","Apply",k);
+    outerDiv.appendChild(but);
+
+    document.getElementById("pageList").appendChild(outerDiv);
+  }
+}
 function createDiv(name,num){
   var div=document.createElement("DIV");
 
@@ -141,14 +149,4 @@ function createButton(name,content,num){
   but.textContent = content;
 
   return but;
-}
-function populateSideBar(num){
-  for(var k=0;k<num;k++){
-    var outerDiv= createDiv("feedBox",k);
-
-    var para = createParagraph("feedBoxContent","TEST",k);
-    outerDiv.appendChild(para);
-
-    document.getElementById("sideFeed").appendChild(outerDiv);
-  }
 }
