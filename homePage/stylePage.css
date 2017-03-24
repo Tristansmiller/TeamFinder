@@ -200,7 +200,7 @@ img.cellImage:hover {
     border: 2px solid rgb(204,153,51);
     border-radius: 7px;
     font-size: 16px;
-    color: dimgrey;
+    color: rgb(204,153,51);
     background-color: transparent;
     background-image: url("assets/search.png");
     background-size: 25px 25px;
@@ -211,7 +211,7 @@ img.cellImage:hover {
 }
 #searchBar:focus {
     width: 20%;
-    background-color: antiquewhite;
+    background-color: rgb(55,59,68);
 }
 
 div.currentUser {
