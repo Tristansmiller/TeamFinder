@@ -4,11 +4,11 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
-<<<<<<< HEAD:gamePage/test.js
 
 function adjustPage(){
   document.getElementById("pageBody").style.width=""+(screen.width)-205+"px";
-=======
+}
+
 function loggedAs(name) {
     var user = name;
     var p = document.createElement("P");
@@ -19,8 +19,8 @@ function loggedAs(name) {
     p.setAttributeNode(att);
     
     document.getElementById("currentUserBox").appendChild(p);
->>>>>>> refs/remotes/origin/Remy:gamePage/testGame.js
 }
+
 function populatePageList(num){
   for(var k = 0;k<num;k++){
     var outerDiv=document.createElement("DIV");

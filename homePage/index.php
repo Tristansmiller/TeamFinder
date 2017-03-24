@@ -78,12 +78,7 @@
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
-<<<<<<< HEAD
-                      <button id="login-submit" type="submit" class="btn btn-success btn-block submit"> Login</button>
-=======
-                      <!-- fixed extra space in "login"--> 
-                      <button id="login-submit" type="submit" class="btn btn-success btn-block">Login</button>
->>>>>>> refs/remotes/origin/John
+                    <button id="login-submit" type="submit" class="btn btn-success btn-block submit"> Login</button>
                   </form>
                 </div>
                 <div class="modal-footer">
