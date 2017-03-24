@@ -4,17 +4,25 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
+<<<<<<< HEAD:gamePage/test.js
 
-<<<<<<< HEAD
-function populatePageList(array){
-  for(var k = 0;k<array.length;k++){
-=======
 function adjustPage(){
   document.getElementById("pageBody").style.width=""+(screen.width)-205+"px";
+=======
+function loggedAs(name) {
+    var user = name;
+    var p = document.createElement("P");
+    var content = document.createTextNode("Logged in as "+name);
+    p.appendChild(content);
+    var att = document.createAttribute("id");
+    att.value = "currentUserText";
+    p.setAttributeNode(att);
+    
+    document.getElementById("currentUserBox").appendChild(p);
+>>>>>>> refs/remotes/origin/Remy:gamePage/testGame.js
 }
 function populatePageList(num){
   for(var k = 0;k<num;k++){
->>>>>>> refs/remotes/origin/master
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="listNode";
@@ -44,13 +52,13 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value = "listImage"+k;
     att = document.createAttribute("src");
-    att.value = "assets/test.png";
+    att.value = "assets/testAvatar.png";
     img.setAttributeNode(att);
     imgLink.appendChild(img);
     imgNode.appendChild(imgLink);
 
     var para = document.createElement("P");
-    var content = document.createTextNode(array[k].userID);
+    var content = document.createTextNode("USERNAME");
     para.appendChild(content);
     att = document.createAttribute("class");
     att.value="listUSR";
@@ -67,15 +75,9 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value = "listInfo"+k;
     info.setAttributeNode(att);
-<<<<<<< HEAD
-    var p = document.createElement("P");
-    var cont = document.createTextNode(array[k].description);
-    p.appendChild(cont);
-=======
     var h2 = document.createElement("H2");
     var cont = document.createTextNode("AD TITLE");
     h2.appendChild(cont);
->>>>>>> refs/remotes/origin/master
     att = document.createAttribute("class");
     att.value="listInfoP";
     h2.setAttributeNode(att);
