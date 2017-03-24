@@ -4,22 +4,9 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
-<<<<<<< HEAD:gamePage/test.js
 
 function adjustPage(){
   document.getElementById("pageBody").style.width=""+(screen.width)-205+"px";
-=======
-function loggedAs(name) {
-    var user = name;
-    var p = document.createElement("P");
-    var content = document.createTextNode("Logged in as "+name);
-    p.appendChild(content);
-    var att = document.createAttribute("id");
-    att.value = "currentUserText";
-    p.setAttributeNode(att);
-    
-    document.getElementById("currentUserBox").appendChild(p);
->>>>>>> refs/remotes/origin/Remy:gamePage/testGame.js
 }
 function populatePageList(num){
   for(var k = 0;k<num;k++){
@@ -52,7 +39,7 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value = "listImage"+k;
     att = document.createAttribute("src");
-    att.value = "assets/testAvatar.png";
+    att.value = "assets/test.png";
     img.setAttributeNode(att);
     imgLink.appendChild(img);
     imgNode.appendChild(imgLink);

@@ -4,6 +4,7 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
+<<<<<<< HEAD
 function loggedAs(name) {
     var user = name;
     var p = document.createElement("P");
@@ -61,6 +62,43 @@ function populatePageGrid(num){
       att = document.createAttribute("id");
       att.value=("cellDesc"+k);
       para.setAttributeNode(att);
+=======
+function populatePageGrid(array){
+  for(var k = 0;k<array.length;k++){
+    var outerDiv=document.createElement("DIV");
+    var att = document.createAttribute("class");
+    att.value="gridCell";
+    outerDiv.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value=("gridCell"+k);
+    outerDiv.setAttributeNode(att);
+
+    var imgLink = document.createElement("A");
+    att = document.createAttribute("href");
+    att.value = "../gamePage/index.html";
+    imgLink.setAttributeNode(att);
+    var img = document.createElement("IMG");
+    att = document.createAttribute("class");
+    att.value = "cellImage";
+    img.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value = ("cellImage"+k);
+    img.setAttributeNode(att);
+    att = document.createAttribute("src");
+    att.value = array[k].picture;
+    img.setAttributeNode(att);
+    imgLink.appendChild(img);
+
+    var para = document.createElement("P");
+    var content = document.createTextNode(array[k].name);
+    para.appendChild(content);
+    att = document.createAttribute("class");
+    att.value="cellDesc";
+    para.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value=("cellDesc"+k);
+    para.setAttributeNode(att);
+>>>>>>> refs/remotes/origin/Jacob
 
       outerDiv.appendChild(imgLink);
       outerDiv.appendChild(document.createElement("BR"));
