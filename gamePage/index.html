@@ -29,12 +29,12 @@
       <p id="currentUser">Logged in as USER1</p>
     </div>
   </div>
-  <div class="pageBody">
+  <div class="pageBody" id="pageBody">
     <div class="title">
         <!-- Trigger the modal with a button -->
         <button type="button" id="loginButton" class="btn btn-info btn" data-toggle="modal" data-target="#loginModal" data-backdrop="false">Login</button>
 
-        <!-- Modal -->
+        <!-- Login Modal -->
         <div class="modal fade" id="loginModal" role="dialog">
             <div class="modal-dialog">
 
@@ -68,32 +68,29 @@
           <!--Trigger the create ad modal with this button-->
           <button type="button" id="createButton" class="btn btn-info btn" data-toggle="modal" data-target="#createModal" data-backdrop="false">Create Ad</button>
 
-        <!-- Modal -->
+        <!-- Create Ad Modal -->
         <div class="modal fade" id="createModal" role="dialog">
             <div class="modal-dialog">
 
               <!-- Modal content-->
-              <div class="modal-content">
+              <div class="modal-content create-modal-content">
                 <div class="modal-body" style="padding:40px 50px;">
-                  <form role="form">
-                    <div class="form-group">
-                      <label for="usrname">Time</label>
-                      <input type="text" class="form-control" id="time" placeholder="Set time">
+                  <div class="imageNode">
+                    <img class="listImage" src="assets/test.png">
+                    <p class="listUSR">USERNAME</p>
+                  </div>
+                  <div class="listInfo">
+                    <div class="form-group ad-desc-form">
+                      <label for="adTitle">Ad Title</label>
+                      <input class="form-control" id="adTitle" placeholder="Enter a title.">
+                      <label for="adDesc">Ad Description</label>
+                      <input class="form-control ad-desc-input" size="50" id="adDesc" placeholder="Enter a description." size="50">
                     </div>
-                    <div class="form-group">
-                      <label for="psw">Requirements</label>
-                      <input type="text" class="form-control" id="req" placeholder="Enter requirements">
-                    </div>
-                    <div class="checkbox">
-                      <label><input type="checkbox" value="">Remember me</label>
-                    </div>
-                      <button id="createAd-submit" type="submit" class="btn btn-success btn-block"> Create Ad</button>
-                  </form>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <button id="modal-close-button" type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Close</button>
-                  <p class="modal-footer-text">Not a member? <a class="modal-footer-link" href="#">Sign Up</a></p>
-                  <p class="modal-footer-text">Forgot <a class="modal-footer-link" href="#">Password?</a></p>
+                  <button id="createAdButton" type="submit" class="btn btn-default btn-primary pull-right">Create</button>
                 </div>
               </div>
 
@@ -112,7 +109,7 @@
     <div class="filter">
     </div>
     <div class="pageList" id="pageList">
-      <script language="javascript" src="./test.js" onload="populatePageList(10)"></script>
+      <script language="javascript" src="./test.js" onload="populatePageList(10);adjustPage();"></script>
     </div>
   </div>
 </body>

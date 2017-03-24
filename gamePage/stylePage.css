@@ -1,3 +1,6 @@
+::-webkit-scrollbar{
+  display:none;
+}
 div.side{
   position:fixed;
   left:0px;
@@ -20,12 +23,15 @@ div.topSideOptions{
 body{
   background-color:rgb(55,59,68);
 }
-a.btn-primary{
+.btn-primary{
   background-color:rgb(39,60,94);
   border-color:rgb(39,60,94);
   color:rgb(255,255,255);
 }
-a.btn-primary:hover{
+.btn-primary:hover{
+  background-color:rgb(204,153,51);
+}
+.btn-primary:focus{
   background-color:rgb(204,153,51);
 }
 
@@ -58,6 +64,8 @@ p.feedBoxContent{
   margin:auto;
 }
 div.pageBody{
+  width:100%;
+  height:100%;
   position:absolute;
   left:205;
 
@@ -185,6 +193,12 @@ a.modal-footer-link:hover{
 #createButton:hover{
   background-color:rgb(204,153,51);
 }
+.create-modal-content{
+  position:absolute;
+  left:-30%;
+  width:1000px;
+  height:250px;
+}
 
 div.filter{
   height:21px;
@@ -195,24 +209,18 @@ div.filter{
   background:rgb(39,60,94)
 }
 div.pageList{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content: center;
-  overflow:auto;
-  position:fixed;                                                                                                                                 overflow:auto;
+  position:absolute;                                                                                                                            overflow:auto;
   height:87%;
-  width:90%;
-  top:125px;
-  left:200px;
+  width:100%;
+  top:121px;
+  left:0%;
   background-clip:content-box;
 }
 div.listNode{
-  display:flex;
-  flex-direction:row;
-  align-items:left;
-  position:auto;
+  position:absolute;
   height:250px;
   width:100%;
+  left:0%;
   padding-top:40px;
   padding-left:50px;
   padding-bottom: 40px;
@@ -223,29 +231,36 @@ div.listNode{
   box-shadow: 0px 0px 0px rgb(204,153,51);
   transition: box-shadow 0.1s linear
 }
-
+div.left-quarter-block{
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:25%;
+  height:100%;
+}
 div.imageNode {
-  display: flex;
-  flex-direction: column;
+  width:200px;
+  height:200px;
+  left:0%;
+  top:0%;
   padding-bottom: 5px;
 }
 
-#listUSR {
+.listUSR {
+  width:150px;
   padding-top:10px;
   text-align: center;
 }
 
 div.listInfo {
-  position:relative;
-  padding-left:15px;
-  display: flex;
-  flex-direction: column;
-  height: 200px;
-  width: 83%;
+  position:absolute;
+  height: 90%;
+  width: 80%;
+  left:20%;
+  top:10%;
 }
 
 .h2 {
-  display:flex;
   width:50px;
 }
 
@@ -254,16 +269,16 @@ div.listNode:hover {
   background-color: #686868;
 }
 
-#listImage{
+.listImage{
   border-radius:25px;
   margin:auto;
   width: 150px;
   height: 150px;
   border-collapse: collapse;
-  
+
 }
 
-#listImage:hover {
+.listImage:hover {
   animation-name:hoverImage;
   animation-duration:.5s;
   animation-fill-mode:forwards;
@@ -271,8 +286,11 @@ div.listNode:hover {
 }
 
 #applyButton {
-  position:relative;
+  position:absolute;
   height:20%;
+  width:10%;
+  bottom:0%;
+  right:0%;
   background-color: rgb(40,44,52);
   color:rgb(255,255,255);
   border-color:rgb(40,44,52);
@@ -280,6 +298,7 @@ div.listNode:hover {
 
 #applyButton:hover {
     background-color:rgb(204,153,51);
+    border-color:rgb(204,153,51);
 }
 
 @keyframes hoverImage{
@@ -289,4 +308,13 @@ div.listNode:hover {
 
 p.cellDesc{
   margin:auto;
+}
+.ad-desc-form{
+  height:90%;
+  margin-left:15px;
+  margin-right:15px;
+}
+.form-control{
+  background-color: rgb(55,59,68);
+  color: rgb(255,255,255);
 }

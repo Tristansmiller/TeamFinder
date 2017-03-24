@@ -5,6 +5,9 @@ function populatePage(k){
   }
 }
 
+function adjustPage(){
+  document.getElementById("pageBody").style.width=""+(screen.width)-205+"px";
+}
 function populatePageList(num){
   for(var k = 0;k<num;k++){
     var outerDiv=document.createElement("DIV");
@@ -14,6 +17,7 @@ function populatePageList(num){
     att = document.createAttribute("id");
     att.value=("listNode"+k);
     outerDiv.setAttributeNode(att);
+    outerDiv.style.top=""+(250*k)+"px";
 
     var imgNode = document.createElement("DIV");
     att = document.createAttribute("class");
@@ -29,9 +33,11 @@ function populatePageList(num){
     att.value = "../accountPage/indexP.html";
     imgLink.setAttributeNode(att);
     var img = document.createElement("IMG");
-    att = document.createAttribute("id");
-    att.value = ("listImage");
+    att = document.createAttribute("class");
+    att.value = "listImage";
     img.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value = "listImage"+k;
     att = document.createAttribute("src");
     att.value = "assets/test.png";
     img.setAttributeNode(att);
@@ -45,7 +51,7 @@ function populatePageList(num){
     att.value="listUSR";
     para.setAttributeNode(att);
     att = document.createAttribute("id");
-    att.value=("listUSR");
+    att.value=("listUSR"+k);
     para.setAttributeNode(att);
     imgNode.appendChild(para);
 
@@ -61,11 +67,11 @@ function populatePageList(num){
     h2.appendChild(cont);
     att = document.createAttribute("class");
     att.value="listInfoP";
-    para.setAttributeNode(att);
+    h2.setAttributeNode(att);
     att = document.createAttribute("id");
     att.value=("listInfoP"+k);
     h2.setAttributeNode(att);
-    
+
 
     var but = document.createElement("BUTTON");
     att = document.createAttribute("class");
@@ -79,10 +85,10 @@ function populatePageList(num){
     but.setAttributeNode(att);
     but.textContent = "Apply";
     but.style.color = "white";
-    h2.appendChild(but);
+
     info.appendChild(h2);
-    
     outerDiv.appendChild(info);
+    outerDiv.appendChild(but);
 
     /*outerDiv.appendChild(img);
     outerDiv.appendChild(document.createElement("BR"));

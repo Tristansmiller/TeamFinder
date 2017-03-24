@@ -1,3 +1,6 @@
+::-webkit-scrollbar{
+  display:none;
+}
 div.side{
   position:fixed;
   left:0px;
@@ -27,7 +30,7 @@ a.btn-primary{
 }
 a.btn-primary:hover{
   background-color:rgb(204,153,51);
-}
+}``
 a.btn-primary:focus{
   background-color:rgb(204,153,51);
 }
@@ -202,7 +205,7 @@ img.cellImage:hover {
     background-color: transparent;
     background-image: url("assets/search.png");
     background-size: 25px 25px;
-    background-position: 10px 10px; 
+    background-position: 10px 10px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     transition: width 0.4s ease-in-out;
