@@ -24,6 +24,8 @@
     </div>
     <div class="sideFeed" id="sideFeed">
     </div>
+    <div class="currentUser" id="currentUserBox">
+    </div>
   </div>
   <div class="pageBody">
     <div class="title">
@@ -51,12 +53,8 @@
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
-<<<<<<< HEAD
-                      <button id="login-submit" type="submit" class="btn btn-success btn-block submit"> Login</button>
-=======
-                      <!-- fixed extra space in "login"--> 
+                      <!-- fixed extra space in "login"-->
                       <button id="login-submit" type="submit" class="btn btn-success btn-block">Login</button>
->>>>>>> refs/remotes/origin/John
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -69,15 +67,22 @@
             </div>
           </div>
         <img id="titleImage" src="assets/titleImage3.png">
+         <input id = "searchBar" 
+              type = "text" 
+              name = "search" 
+       placeholder = "Search.." 
+         onkeyup = "searchPage(100,document.getElementById('searchBar').value);"
+         />
         <div id="titleImgBox">
         </div>
         <div id="titleLoginBox">
         </div>
       </div>
     <div class="filter">
+
     </div>
     <div class="pageGrid" id="pageGrid">
-      <script language="javascript" src="./test.js" onload="populatePageGrid(100);populateSideBar(15);"></script>
+      <script language="javascript" src="./test.js" onload="populatePageGrid(100);populateSideBar(15);loggedAs('Remy');"></script>
     </div>
   </div>
 </body>

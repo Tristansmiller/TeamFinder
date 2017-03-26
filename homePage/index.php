@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Test</title>
+  <title>Team Finder</title>
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- jQuery library -->
@@ -16,16 +16,13 @@
 <body >
   <div class="side">
     <div class="topSideOptions">
-      <div id="topSideL">
-        <img class="testImage" src="assets/placeholder.PNG" id="testImage"><br>
+      <div id="account-friends-group" class="btn-group btn-group-justified">
+        <a id="account-link" href="../accountPage/indexP.html" class="btn btn-primary">Account</a>
+        <a id="friends-link" href="../accountPage/indexF.html" class="btn btn-primary">Friends</a>
       </div>
-      <div id="topSideR">
-      </div>
-      <div id="topSideU">
-      </div>
+      <a id="my-ads-link" href="../accountPage/indexM.html" class="btn btn-primary btn-block">My Ads</a>
     </div>
     <div class="sideFeed" id="sideFeed">
-      <script language="javascript" src="./test.js" onload="populateSideBar(15)"></script>
     </div>
   </div>
   <div class="pageBody">
@@ -40,19 +37,21 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-body" style="padding:40px 50px;">
-                  <form role="form">
+                  <!-- added action specification and post method -->
+                  <form role="form" action="login.php" method="post">
                     <div class="form-group">
                       <label for="usrname">Username</label>
-                      <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                      <!-- Marked both forms as required input -->
+                      <input type="text" class="form-control" id="usrname" placeholder="Enter username" required>
                     </div>
                     <div class="form-group">
                       <label for="psw">Password</label>
-                      <input type="password" class="form-control" id="psw" placeholder="Enter password">
+                      <input type="password" class="form-control" id="psw" placeholder="Enter password" required>
                     </div>
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
-                      <button id="login-submit" type="submit" class="btn btn-success btn-block"> Login</button>
+                    <button id="login-submit" type="submit" class="btn btn-success btn-block submit"> Login</button>
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -64,7 +63,7 @@
 
             </div>
           </div>
-        <h1 id="title-text"> TeamFinder</h1>
+        <img id="titleImage" src="assets/titleImage3.png">
         <div id="titleImgBox">
         </div>
         <div id="titleLoginBox">
@@ -72,9 +71,8 @@
       </div>
     <div class="filter">
     </div>
-     <div class="pageGrid" id="pageGrid">
-	  
-	  	  <?php
+    <div class="pageGrid" id="pageGrid">
+	    <?php
 			$servername = "localhost";
 			$username = "root";
 			$password = "";
@@ -102,54 +100,8 @@
 			$arrayJSON = json_encode($array);
 			$conn->close();
 		?>
-	  
-      <script type="text/javascript">
-	  var size = <?php echo $i ?>;
-	  var array = JSON.parse('<?php echo $arrayJSON ?>');
-function populatePageGrid(){
-  for(var k = 0;k<size;k++){
-    var outerDiv=document.createElement("DIV");
-    var att = document.createAttribute("class");
-    att.value="gridCell";
-    outerDiv.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value=("gridCell"+k);
-    outerDiv.setAttributeNode(att);
-
-    var img = document.createElement("IMG");
-    att = document.createAttribute("class");
-    att.value = "cellImage";
-    img.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value = ("cellImage"+k);
-    img.setAttributeNode(att);
-    att = document.createAttribute("src");
-    att.value = array[k].picture;
-    img.setAttributeNode(att);
-
-    var para = document.createElement("P");
-    var content = document.createTextNode(array[k].name);
-    para.appendChild(content);
-    att = document.createAttribute("class");
-    att.value="cellDesc";
-    para.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value=("cellDesc"+k);
-    para.setAttributeNode(att);
-
-    outerDiv.appendChild(img);
-    outerDiv.appendChild(document.createElement("BR"));
-    outerDiv.appendChild(para);
-    document.getElementById("pageGrid").appendChild(outerDiv);
-  }
-}
-		<?php
-			echo "populatePageGrid();";
-		?>
-	  </script>
-	  
-
-	  
+	  <script type="text/javascript"> var gameArray = <?php echo json_encode($array) ?>;</script>
+      <script language="javascript" src="./test.js" onload="populatePageGrid(gameArray);populateSideBar(15);"></script>
     </div>
   </div>
 </body>
