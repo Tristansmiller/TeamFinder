@@ -2,7 +2,7 @@
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
-	$dbname = "oneup";
+	$dbname = "teamfinder";
 	// Create connection
 	$conn = new mysqli($servername, $username, $password, $dbname);
 	// Check connection
@@ -23,6 +23,20 @@
 	} else {
 		echo "0 results";
 	}
+	
+	// Attach the number of corresponding ads to each game
+	$i=0;
+	for($x=0;$x<sizeof($array);$x++){
+		$sql = "SELECT COUNT(*) FROM ad WHERE gameID = ".$array[$i]['gameID'];
+		$result = $conn->query($sql);		
+		if($result->num_rows>0){
+			while($row=$result->fetch_assoc()){
+				$array[$x]['numberOfAds']=$row['COUNT(*)'];
+				$i=$i+1;
+			}
+		}		
+	}
+	
 	$conn->close();
 ?>
 <html>
@@ -44,12 +58,13 @@
   <div class="side">
     <div class="topSideOptions">
       <div id="account-friends-group" class="btn-group btn-group-justified">
-        <a id="account-link" href="../accountPage/indexP.html" class="btn btn-primary">Account</a>
-        <a id="friends-link" href="../accountPage/indexF.html" class="btn btn-primary">Friends</a>
+        <a id="account-link" href="../accountPage/index.html" class="btn btn-primary">Account</a>
+        <a id="friends-link" href="#" class="btn btn-primary">Friends</a>
       </div>
-      <a id="my-ads-link" href="../accountPage/indexM.html" class="btn btn-primary btn-block">My Ads</a>
+      <a id="my-ads-link" href="#" class="btn btn-primary btn-block">My Ads</a>
     </div>
     <div class="sideFeed" id="sideFeed">
+      <script language="javascript" src="./test.js" onload="populateSideBar(15)"></script>
     </div>
   </div>
   <div class="pageBody">
@@ -78,7 +93,8 @@
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
-                    <button id="login-submit" type="submit" class="btn btn-success btn-block submit"> Login</button>
+                      <!-- fixed extra space in "login"--> 
+                      <button id="login-submit" type="submit" class="btn btn-success btn-block">Login</button>
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -99,9 +115,9 @@
     <div class="filter">
     </div>
     <div class="pageGrid" id="pageGrid">
-	  <!-- Get the array of games to be used for populatePageGrid() -->
+      <!-- Get the array of games to be used for populatePageGrid() -->
 	  <script type="text/javascript"> var gameArray = <?php echo json_encode($array) ?>; </script>
-      <script language="javascript" src="./test.js" onload="populatePageGrid(gameArray);populateSideBar(15);"></script>
+      <script language="javascript" src="homejs.js" onload="populatePageGrid(gameArray);populateSideBar(15);"></script>
     </div>
   </div>
 </body>
