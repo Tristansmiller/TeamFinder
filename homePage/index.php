@@ -37,6 +37,11 @@
 		}		
 	}
 	
+	// Sort the array of games in descending order from the number of ads
+	usort($array, function($a, $b) {
+		return $b['numberOfAds'] - $a['numberOfAds'];
+	});
+	
 	$conn->close();
 ?>
 <html>
