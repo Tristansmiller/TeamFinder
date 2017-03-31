@@ -7,7 +7,7 @@ function populatePage(k){
 function loggedAs(name) {
     var user = name;
     var p = document.createElement("P");
-    var content = document.createTextNode("Logged in as "+name);
+var content = document.createTextNode("Logged in as "+name);
     p.appendChild(content);
     var att = document.createAttribute("id");
     att.value = "currentUser";
@@ -21,7 +21,7 @@ function searchPage(num, filter) {
     var desc = document.getElementById("cellDesc"+k).innerHTML;
     if (filter=="") {ele.style.display = "flex"}
     else if(!desc.toLowerCase().includes(filter.toLowerCase())) {ele.style.display = "none";} 
-    else ele.style.display = "flex";
+	else ele.style.display = "flex";
   }
 }
 
@@ -36,7 +36,7 @@ function populatePageGrid(array){
     outerDiv.setAttributeNode(att);
 
     var imgLink = document.createElement("A");
-    att = document.createAttribute("href");
+	att = document.createAttribute("href");
     att.value = "../gamePage/index.php?id="+array[k].gameID;
     imgLink.setAttributeNode(att);
     var img = document.createElement("IMG");
@@ -49,8 +49,8 @@ function populatePageGrid(array){
     att = document.createAttribute("src");
     att.value = array[k].picture;
     img.setAttributeNode(att);
-    imgLink.appendChild(img);
-
+	imgLink.appendChild(img);
+	
     var para = document.createElement("P");
     var content = document.createTextNode(array[k].name);
     para.appendChild(content);
@@ -60,11 +60,11 @@ function populatePageGrid(array){
     att = document.createAttribute("id");
     att.value=("cellDesc"+k);
     para.setAttributeNode(att);
-
+	
     outerDiv.appendChild(imgLink);
     outerDiv.appendChild(document.createElement("BR"));
-    outerDiv.appendChild(para);
-    document.getElementById("pageGrid").appendChild(outerDiv);
+	 outerDiv.appendChild(para);
+	 document.getElementById("pageGrid").appendChild(outerDiv);
   }
 }
 
@@ -88,8 +88,8 @@ function populateSideBar(num){
     att.value = ("feedBoxContent"+k);
     para.setAttributeNode(att);
 
-
-    outerDiv.appendChild(para);
-    document.getElementById("sideFeed").appendChild(outerDiv);
+	
+	outerDiv.appendChild(para);
+	document.getElementById("sideFeed").appendChild(outerDiv);
   }
 }

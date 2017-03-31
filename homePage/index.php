@@ -46,6 +46,7 @@
 	
 	// Get the list of the user's ads
 	$i=0;
+	$userAds = [];
 	if(!empty($_SESSION["currentUser"])){
 		$sql = "SELECT * FROM ad WHERE userID = '".$_SESSION["currentUser"]."'";
 		$queryResult = $conn->query($sql);
@@ -60,7 +61,7 @@
 			echo "0 results";
 		}
 	}
-	
+
 	// Close the connection to the database
 	$conn->close();
 ?>
