@@ -4,8 +4,8 @@ function populatePage(k){
     populateSideBar(k);
   }
 }
-function populatePageGrid(array){
-  for(var k = 0;k<array.length;k++){
+function populatePageGrid(listOfGames){
+  for(var k = 0;k<listOfGames.length;k++){
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="gridCell";
@@ -16,7 +16,7 @@ function populatePageGrid(array){
 
     var imgLink = document.createElement("A");
     att = document.createAttribute("href");
-    att.value = "../gamePage/index.php?id="+array[k].gameID;
+    att.value = "../gamePage/index.php?id="+listOfGames[k].gameID;
     imgLink.setAttributeNode(att);
     var img = document.createElement("IMG");
     att = document.createAttribute("class");
@@ -26,12 +26,12 @@ function populatePageGrid(array){
     att.value = ("cellImage"+k);
     img.setAttributeNode(att);
     att = document.createAttribute("src");
-    att.value = "..\\"+array[k].picture;
+    att.value = "..\\"+listOfGames[k].picture;
     img.setAttributeNode(att);
     imgLink.appendChild(img);
 
     var para = document.createElement("P");
-    var content = document.createTextNode(array[k].gameName);
+    var content = document.createTextNode(listOfGames[k].gameName);
     para.appendChild(content);
     att = document.createAttribute("class");
     att.value="cellDesc";
@@ -47,8 +47,8 @@ function populatePageGrid(array){
   }
 }
 
-function populateSideBar(num){
-  for(var k=0;k<num;k++){
+function populateSideBar(userAds){
+  for(var k=0;k<userAds.length;k++){
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="feedBox";
@@ -58,7 +58,7 @@ function populateSideBar(num){
     outerDiv.setAttributeNode(att);
 
     var para = document.createElement("P");
-    var content = document.createTextNode("TEST");
+    var content = document.createTextNode(userAds[k].description);
     para.appendChild(content);
     att = document.createAttribute("class");
     att.value="feedBoxContent";

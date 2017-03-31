@@ -9,16 +9,17 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	
+	// Start the php session
+	session_start();
 	// Select all games from the database
 	$sql = "SELECT * FROM game";
-	$result = $conn->query($sql);
+	$queryResult = $conn->query($sql);
 	STATIC $i=0;
-	if ($result->num_rows > 0) {
+	if ($queryResult->num_rows > 0) {
 		// output data of each row
-		while($row = $result->fetch_assoc()) {
-			$array[$i]= $row;
-			$i=$i+1;
+		while($row = $queryResult->fetch_assoc()) {
+			$listOfGames[$i]= $row;
+			$i++;
 		}
 	} else {
 		echo "0 results";
@@ -26,22 +27,41 @@
 	
 	// Attach the number of corresponding ads to each game
 	$i=0;
-	for($x=0;$x<sizeof($array);$x++){
-		$sql = "SELECT COUNT(*) FROM ad WHERE gameID = ".$array[$i]['gameID'];
-		$result = $conn->query($sql);		
-		if($result->num_rows>0){
-			while($row=$result->fetch_assoc()){
-				$array[$x]['numberOfAds']=$row['COUNT(*)'];
+	for($x=0;$x<sizeof($listOfGames);$x++){ 
+		$sql = "SELECT COUNT(*) FROM ad WHERE gameID = ".$listOfGames[$i]['gameID'];
+		$queryResult = $conn->query($sql);		
+		if($queryResult->num_rows>0){
+			while($row=$queryResult->fetch_assoc()){
+				$listOfGames[$x]['numberOfAds']=$row['COUNT(*)'];
 				$i=$i+1;
 			}
 		}		
 	}
 	
 	// Sort the array of games in descending order from the number of ads
-	usort($array, function($a, $b) {
+	usort($listOfGames, function($a, $b) {
 		return $b['numberOfAds'] - $a['numberOfAds'];
 	});
 	
+	
+	// Get the list of the user's ads
+	$i=0;
+	if(!empty($_SESSION["currentUser"])){
+		$sql = "SELECT * FROM ad WHERE userID = '".$_SESSION["currentUser"]."'";
+		$queryResult = $conn->query($sql);
+		STATIC $i=0;
+		if ($queryResult->num_rows > 0) {
+			// output data of each row
+			while($row = $queryResult->fetch_assoc()) {
+				$userAds[$i]= $row;
+				$i++;
+			}
+		} else {
+			echo "0 results";
+		}
+	}
+	
+	// Close the connection to the database
 	$conn->close();
 ?>
 <html>
@@ -89,17 +109,17 @@
                     <div class="form-group">
                       <label for="usrname">Username</label>
                       <!-- Marked both forms as required input -->
-                      <input type="text" class="form-control" id="usrname" placeholder="Enter username" required>
+                      <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter username" required>
                     </div>
                     <div class="form-group">
                       <label for="psw">Password</label>
-                      <input type="password" class="form-control" id="psw" placeholder="Enter password" required>
+                      <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password" required>
                     </div>
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
                       <!-- fixed extra space in "login"--> 
-                      <button id="login-submit" type="submit" class="btn btn-success btn-block">Login</button>
+                      <button id="login-submit" type="submit" class="btn btn-success btn-block" >Login</button>
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -121,8 +141,11 @@
     </div>
     <div class="pageGrid" id="pageGrid">
       <!-- Get the array of games to be used for populatePageGrid() -->
-	  <script type="text/javascript"> var gameArray = <?php echo json_encode($array) ?>; </script>
-      <script language="javascript" src="homejs.js" onload="populatePageGrid(gameArray);populateSideBar(15);"></script>
+	  <script type="text/javascript"> 
+		var listOfGames = <?= json_encode($listOfGames) ?>; 
+		var userAds = <?= json_encode($userAds) ?>;
+	  </script> 
+      <script language="javascript" src="homeJava.js" onload="populatePageGrid(listOfGames);populateSideBar(userAds);"></script>
     </div>
   </div>
 </body>
