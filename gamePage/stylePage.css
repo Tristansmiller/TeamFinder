@@ -285,7 +285,7 @@ div.listNode:hover {
   box-shadow: 0px 0px 30px rgb(204,153,51);
 }
 
-#applyButton {
+.applyButton {
   position:absolute;
   height:20%;
   width:10%;
@@ -296,7 +296,7 @@ div.listNode:hover {
   border-color:rgb(40,44,52);
 }
 
-#applyButton:hover {
+.applyButton:hover {
     background-color:rgb(204,153,51);
     border-color:rgb(204,153,51);
 }
