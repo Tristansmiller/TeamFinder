@@ -7,7 +7,7 @@ function populatePage(k){
 function loggedAs(name) {
     var user = name;
     var p = document.createElement("P");
-var content = document.createTextNode("Logged in as "+name);
+	var content = document.createTextNode("Logged in as "+name);
     p.appendChild(content);
     var att = document.createAttribute("id");
     att.value = "currentUser";

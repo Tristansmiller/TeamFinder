@@ -1,17 +1,53 @@
-function populateFriends(num){
-  for(var k=1;k<=num;k++){
-    var friendBlock = createDiv("friend-block",k);
+function populateFriends(friendsList){
+  for(var k=0;k<=friendsList.length;k++){
+    var friendBlock=document.createElement("DIV");
+    var att = document.createAttribute("class");
+    att.value="friend-block";
+    friendBlock.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value=("friend-block"+k);
+    friendBlock.setAttributeNode(att);
+    friendBlock.style.top=(""+(27.5*(k-1)+5)+"%")
 
-    var leftQuarterDiv = createDiv("left-quarter-block",k);
-    friendBlock.appendChild(leftQuarterDiv);
+    var leftQuarterDiv = document.createElement("DIV");
+    att = document.createAttribute("class");
+    att.value = "left-quarter-block";
+    leftQuarterDiv.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value = ("left-quarter-block"+k);
+    leftQuarterDiv.setAttributeNode(att);
 
-    var avatarImg = createImage("friend-avatar","assets/testAvatar.png",k);
-    leftQuarterDiv.appendChild(avatarimg);
+    var avatarImg = document.createElement("IMG");
+    att = document.createAttribute("class");
+    att.value = "friend-avatar";
+    avatarImg.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value = ("friend-avatar"+k);
+    avatarImg.setAttributeNode(att);
+    att = document.createAttribute("src");
+    att.value = (friendsList[k].picture);
+    avatarImg.setAttributeNode(att);
 
-    var friendName = createParagraph("friend-name","TEST NAME",k);
+    var friendName = document.createElement("P");
+    att = document.createAttribute("class");
+    att.value = "friend-name";
+    friendName.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value = ("friend-name"+k);
+    friendName.appendChild(document.createTextNode(friendsList[k].username));
+
+    var friendBio = document.createElement("P");
+    att = document.createAttribute("class");
+    att.value = "friend-bio";
+    friendBio.setAttributeNode(att);
+    att = document.createAttribute("id");
+    att.value = ("friend-bio"+k);
+    friendBio.setAttributeNode(att);
+    friendBio.appendChild(document.createTextNode(friendsList[k].description));
+
+    leftQuarterDiv.appendChild(avatarImg);
     leftQuarterDiv.appendChild(friendName);
-
-    var friendBio = createParagraph("friend-bio","TEST BIO",k);
+    friendBlock.appendChild(leftQuarterDiv);
     friendBlock.appendChild(friendBio);
 
     document.getElementById("friends-list").appendChild(friendBlock);
