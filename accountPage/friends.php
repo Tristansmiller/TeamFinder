@@ -11,7 +11,7 @@
 	}
 	
 	session_start();
-	// Select all games from the database
+	// Select all friends with the current user
 	$sql = "SELECT * FROM users INNER JOIN friend ON users.userID=friend.userIDB WHERE friend.userIDA='".$_SESSION["currentUser"]."'";
 	$queryResult = $conn->query($sql);
 	STATIC $i=0;

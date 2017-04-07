@@ -1,5 +1,5 @@
-function populateMyAds(num){
-  for(var k=1;k<=num;k++){
+function populateMyAds(userAds){
+  for(var k=0;k<userAds.length;k++){
     var adBlock=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="ad-block";
@@ -25,7 +25,7 @@ function populateMyAds(num){
     att.value = ("ad-game-image"+k);
     adGameImage.setAttributeNode(att);
     att = document.createAttribute("src");
-    att.value = ("assets/testAvatar.png");
+	att.value = ("../"+userAds[k].picture);
     adGameImage.setAttributeNode(att);
 
     var adGameName = document.createElement("P");
@@ -34,7 +34,7 @@ function populateMyAds(num){
     adGameName.setAttributeNode(att);
     att = document.createAttribute("id");
     att.value = ("ad-game-name"+k);
-    adGameName.appendChild(document.createTextNode("Test Name"));
+    adGameName.appendChild(document.createTextNode(userAds[k].gameName));
 
     var adDescription = document.createElement("P");
     att = document.createAttribute("class");
@@ -43,7 +43,7 @@ function populateMyAds(num){
     att = document.createAttribute("id");
     att.value = ("ad-description"+k);
     adDescription.setAttributeNode(att);
-    adDescription.appendChild(document.createTextNode("Test Description"));
+    adDescription.appendChild(document.createTextNode(userAds[k].description));
 
     leftQuarterDiv.appendChild(adGameImage);
     leftQuarterDiv.appendChild(adGameName);

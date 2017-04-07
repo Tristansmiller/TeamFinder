@@ -63,6 +63,14 @@ CREATE TABLE teamfinder.friendRequest(
     FOREIGN KEY(recipientID) REFERENCES teamfinder.users(userID)
 )ENGINE = INNODB;
 
+CREATE TABLE teamfinder.gamesFollowed(
+	userID int NOT NULL,
+	gameID int NOT NULL,
+	PRIMARY KEY(userID, gameID),
+	FOREIGN KEY(userID) REFERENCES teamfinder.users(userID),
+	FOREIGN KEY(gameID) REFERENCES teamfinder.game(gameID)
+)ENGINE = INNODB;
+
 INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("BillyBob","billybob1@gmail.com","password","assets\testAvatar.png","Play a game",4,4,4,4,"5:00","6:00");
 
 INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("JaneBane","janegurll@gmail.com","password","assets\testAvatar.png","I love Overwatch",3,3,3,3,"13:00","18:00");
@@ -366,3 +374,43 @@ INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,33);
 INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (8,1);
 
 INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,8);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (1,1);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (1,12);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (8,8);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (8,17);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (2,5);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (2,3);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (3,10);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (4,8);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (5,2);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (8,3);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (9,11);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (10,12);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (11,13);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (12,1);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (12,2);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (13,14);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (14,15);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (15,16);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (16,17);
+
+INSERT INTO `gamesfollowed`(`userID`, `gameID`) VALUES (6,8);

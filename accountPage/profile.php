@@ -10,7 +10,19 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	session_start();	
+	session_start();
+	// Select all information about the current user
+	$sql = "SELECT * FROM users WHERE userID='".$_SESSION["currentUser"]."'";
+	$queryResult = $conn->query($sql);
+	if ($queryResult->num_rows > 0) {
+		// output data of each row
+		while($row = $queryResult->fetch_assoc()) {
+			$userInfo= $row;
+		}
+	} else {
+		echo "0 results";
+	}
+	
 	// Select all ads from the current user
 	$sql = "SELECT * FROM ad WHERE userID='".$_SESSION["currentUser"]."'";
 	$queryResult = $conn->query($sql);
@@ -18,7 +30,7 @@
 	if ($queryResult->num_rows > 0) {
 		// output data of each row
 		while($row = $queryResult->fetch_assoc()) {
-			$userAds[$i]= $row;
+			$userInfo['ads'][$i]= $row;
 			$i++;
 		}
 	} else {
@@ -43,10 +55,20 @@
 </head>
 
 <body>
-<p id="myAdsHeader">My Ads</p>
-<div class="ad-list-block" id="my-ads-list">
-</div>
-<script language="javascript" src="./myAds.js" onload="populateMyAds(100)"></script>
+  <div class="left-quarter-block">
+    <div id=avatarNameBlock>
+      <img id="usrAvatar" src="<?= $userInfo['picture']?>">
+      <p id="usrName-2"><?php echo $userInfo['username'] ?></p>
+    </div>
+    <p id="gamesFollowedHeader">GAMES FOLLOWED :</p><div id="usrGamesFollowed"></div>
+  </div>
+  <div class="middle-half-block">
+    <img id="ratingBlock" src="assets/testRatings.png">
+    <p id="bioHeader">BIO :</p><p id="usrBio"><?php echo $userInfo['description'] ?></p>
+  </div>
+  <div class="right-quarter-block">
+    <p id="recentAdsHeader">RECENT ADS :</p><div id="usrRecentAds"><?php print_r($userInfo['ads']) ?></div>
+  </div>
 
 </body>
 </html>

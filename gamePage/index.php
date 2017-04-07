@@ -10,15 +10,16 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	
+	// Start the php session
+	session_start();
 	//Get the information about the game
 	$sql = "SELECT * FROM game WHERE gameID = ".$_GET['id'];
-	$result = $conn->query($sql);
+	$queryResult = $conn->query($sql);
 	
 	STATIC $i=0;
-	if ($result->num_rows > 0) {
+	if ($queryResult->num_rows > 0) {
 		// output data of each row; there should exactly 1 row
-		while($row = $result->fetch_assoc()) {
+		while($row = $queryResult->fetch_assoc()) {
 			$game[$i]= $row;
 			$i=$i+1;
 		}
@@ -28,18 +29,18 @@
 
 	//Select all of the ads for the game
 	$sql = "SELECT * FROM ad WHERE gameID = '".$game[0]['gameID']."'";
-	$result = $conn->query($sql);
+	$queryResult = $conn->query($sql);
 	/* Useful debugging script to check if the SQL is correct
-	if (!$result) {
+	if (!$queryResult) {
 		trigger_error('Invalid query: ' . $conn->error);
 	}
 	*/
 	$adsFound = false;
 	STATIC $j=0;
 	
-	if ($result->num_rows > 0) {
+	if ($queryResult->num_rows > 0) {
 		// output data of each row
-		while($row = $result->fetch_assoc()) {
+		while($row = $queryResult->fetch_assoc()) {
 			$adArray[$j]= $row;
 			$j=$j+1;				
 		}
@@ -52,15 +53,34 @@
 	if($adsFound==true){
 		for($x=0;$x<sizeof($adArray);$x++){
 			$sql = "SELECT username,picture FROM users INNER JOIN ad ON users.userID=ad.userID WHERE ad.userID = ".$adArray[$x]['userID'];
-			$result = $conn->query($sql);		
-			if($result->num_rows>0){
-				while($row=$result->fetch_assoc()){
+			$queryResult = $conn->query($sql);		
+			if($queryResult->num_rows>0){
+				while($row=$queryResult->fetch_assoc()){
 					$adArray[$x]['username']=$row['username'];
 					$adArray[$x]['picture']=$row['picture'];
 				}
 			}		
 		}
-	}print_r($adArray);
+	}
+	
+	// Get the list of the user's ads
+	$i=0;
+	$userAds = [];
+	if(!empty($_SESSION["currentUser"])){
+		$sql = "SELECT * FROM ad WHERE userID = '".$_SESSION["currentUser"]."'";
+		$queryResult = $conn->query($sql);
+		STATIC $i=0;
+		if ($queryResult->num_rows > 0) {
+			// output data of each row
+			while($row = $queryResult->fetch_assoc()) {
+				$userAds[$i]= $row;
+				$i++;
+			}
+		} else {
+			echo "0 results";
+		}
+	}
+	
 	$conn->close();
 ?>
 <html>
@@ -73,7 +93,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="stylePage.css">
+  <link rel="stylesheet" type="text/css" href="gameStylePage.css">
   <style>
   </style>
 </head>
@@ -87,7 +107,8 @@
       <a id="my-ads-link" href="#" class="btn btn-primary btn-block">My Ads</a>
     </div>
     <div class="sideFeed" id="sideFeed">
-      <script language="javascript" src="test.js" onload="populateSideBar(15)"></script>
+	  <script language="javascript"> var userAds = <?php echo json_encode($userAds)?>; </script>
+      <script language="javascript" src="gamejs2.js" onload="populateSideBar(userAds)"></script>
     </div>
   </div>
   <div class="pageBody">
@@ -102,14 +123,14 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-body" style="padding:40px 50px;">
-                  <form role="form">
+                  <form role="form" action="login.php?id=<?= $_GET['id'] ?>" method="post">
                     <div class="form-group">
                       <label for="usrname">Username</label>
-                      <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+                      <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                       <label for="psw">Password</label>
-                      <input type="password" class="form-control" id="psw" placeholder="Enter password">
+                      <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password">
                     </div>
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>

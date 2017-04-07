@@ -74,6 +74,9 @@ function populatePageList(array){
     but.setAttributeNode(att);
     but.textContent = "apply";
     but.style.color = "black";
+	but.addEventListener("click", function(){
+		
+	});
     info.appendChild(but);
     
     outerDiv.appendChild(info);
@@ -85,8 +88,8 @@ function populatePageList(array){
   }
 }
 
-function populateSideBar(num){
-  for(var k=0;k<num;k++){
+function populateSideBar(userAds){
+  for(var k=0;k<userAds.length;k++){
     var outerDiv=document.createElement("DIV");
     var att = document.createAttribute("class");
     att.value="feedBox";
@@ -96,7 +99,7 @@ function populateSideBar(num){
     outerDiv.setAttributeNode(att);
 
     var para = document.createElement("P");
-    var content = document.createTextNode("TEST");
+    var content = document.createTextNode(userAds[k].description);
     para.appendChild(content);
     att = document.createAttribute("class");
     att.value="feedBoxContent";

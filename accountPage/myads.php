@@ -12,6 +12,7 @@
 	
 	session_start();	
 	// Select all ads from the current user
+	$adsFound=false;
 	$sql = "SELECT * FROM ad WHERE userID='".$_SESSION["currentUser"]."'";
 	$queryResult = $conn->query($sql);
 	STATIC $i = 0;
@@ -21,8 +22,23 @@
 			$userAds[$i]= $row;
 			$i++;
 		}
+		$adsFound=true;
 	} else {
 		echo "0 results";
+	}
+	
+	//Find who the ads belong to
+	if($adsFound==true){
+		for($x=0;$x<sizeof($userAds);$x++){
+			$sql = "SELECT gameName,picture FROM game WHERE gameID = ".$userAds[$x]['gameID'];
+			$queryResult = $conn->query($sql);		
+			if($queryResult->num_rows>0){
+				while($row=$queryResult->fetch_assoc()){
+					$userAds[$x]['gameName']=$row['gameName'];
+					$userAds[$x]['picture']=$row['picture'];
+				}
+			}		
+		}
 	}
 	
 	$conn->close();
@@ -46,7 +62,8 @@
 <p id="myAdsHeader">My Ads</p>
 <div class="ad-list-block" id="my-ads-list">
 </div>
-<script language="javascript" src="./myAds.js" onload="populateMyAds(100)"></script>
+<script type="text/javascript"> var userAds = <?= json_encode($userAds) ?>; </script>
+<script language="javascript" src="myAds.js" onload="populateMyAds(userAds)"></script>
 
 </body>
 </html>

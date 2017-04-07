@@ -10,20 +10,25 @@
 		die("Connection failed: " . $conn->connect_error);
 	}
 	
-	session_start();	
-	// Select all ads from the current user
-	$sql = "SELECT * FROM ad WHERE userID='".$_SESSION["currentUser"]."'";
+	session_start();
+	// Select all friends with the current user
+	$sql = "SELECT * FROM game INNER JOIN gamesFollowed ON game.gameID=gamesFollowed.gameID WHERE gamesFollowed.userID='".$_SESSION["currentUser"]."'";
 	$queryResult = $conn->query($sql);
-	STATIC $i = 0;
+	if (!$queryResult) {
+		trigger_error('Invalid query: ' . $conn->error);
+	}
+
+	STATIC $i=0;
 	if ($queryResult->num_rows > 0) {
 		// output data of each row
 		while($row = $queryResult->fetch_assoc()) {
-			$userAds[$i]= $row;
-			$i++;
+			$gamesFollowed[$i]= $row;
+			$i=$i+1;
 		}
 	} else {
 		echo "0 results";
 	}
+	
 	
 	$conn->close();
 ?>
@@ -43,10 +48,11 @@
 </head>
 
 <body>
-<p id="myAdsHeader">My Ads</p>
-<div class="ad-list-block" id="my-ads-list">
+<p id="favoriteGamesHeader">Favorite Games</p>
+<div class="game-list-block" id="favorite-games-list">
 </div>
-<script language="javascript" src="./myAds.js" onload="populateMyAds(100)"></script>
+<script type="text/javascript"> var gamesFollowed = <?= json_encode($gamesFollowed) ?>; </script>
+<script src="gamesFollowed.js" type="text/javascript" onload="populatePageGrid(gamesFollowed)"></script>
 
 </body>
 </html>

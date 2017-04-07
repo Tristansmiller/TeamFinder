@@ -1,6 +1,3 @@
-::-webkit-scrollbar {
-  display:none;
-}
 div.side{
   position:fixed;
   left:0px;
@@ -443,6 +440,7 @@ img.testImage{
   text-align:justify;
 }
 .ad-list-block{
+  z-index:3;
   position:absolute;
   width:100%;
   height:85%;
@@ -513,11 +511,6 @@ img.testImage{
   border-radius:3px;
   padding:25px;
 }
-#bioSetting{
-  height:75%;
-  overflow:visible;
-}
-
 #settings-submit{
   margin:25px;
   width:25%;
@@ -527,8 +520,4 @@ img.testImage{
 }
 .short{
   height:15%;
-}
-.form-control{
-  background-color: rgb(55,59,68);
-  color: rgb(255,255,255);
 }
