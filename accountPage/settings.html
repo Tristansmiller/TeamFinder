@@ -25,14 +25,14 @@
   </div>
   <div class="setting-block short" id="usernameSettingBlock">
     <div class="form-group">
-      <label for="usrnameSetting">Username</label>
-      <input type="text" class="form-control" id="usrnameSetting" placeholder="Enter new username">
+      <label for="usernameSetting">Username</label>
+      <input type="text" class="form-control" id="usernameSetting" placeholder="Enter new username">
     </div>
   </div>
-  <div class="setting-block short" id="usernameSettingBlock">
+  <div class="setting-block short" id="passwordSettingBlock">
     <div class="form-group">
-      <label for="usrnameSetting">Password</label>
-      <input type="text" class="form-control" id="usrnameSetting" placeholder="Enter new password">
+      <label for="passwordSetting">Password</label>
+      <input type="text" class="form-control" id="passwordSetting" placeholder="Enter new password">
     </div>
   </div>
   <div class="setting-block tall" id="avatarSettingBlock">
@@ -45,10 +45,10 @@
   <div class="setting-block tall" id="bioSettingBlock">
     <div class="form-group">
       <label for="bioSetting">Bio</label>
-      <input type="text" class="form-control" id="bioSetting" placeholder="Enter new Bio">
+      <textarea class="form-control" id="bioSetting" row = "50" col="50" placeholder="Enter new Bio"></textarea>
     </div>
   </div>
-  <button id="settings-submit" type="submit" class="btn btn-success btn-block submit">Update</button>
+  <button id="settings-submit" type="submit" class="btn btn-success btn-block submit" onclick="retrieveSettingsInfo();">Update</button>
 </div>
 
 </body>
