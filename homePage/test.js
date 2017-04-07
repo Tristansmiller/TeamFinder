@@ -19,18 +19,18 @@ function searchPage(num, filter) {
   }
 }
 
-function populatePageGrid(num){
-  for(var k = 0;k<num;k++){
+function populatePageGrid(listOfGames){
+  for(var k = 0;k<listOfGames.length;k++){
     var outerDiv = createDiv("gridCell",k);
 
-    var imgLink = createLink("cellImageLink","../gamePage/index.html",k);
-    var img = createImage("cellImage","assets/CSGO.png",k);
+    var imgLink = createLink("cellImageLink","../gamePage/index.php?id="+listOfGames[k].gameID,k);
+    var img = createImage("cellImage","../assets/"+listOfGames[k].picture,k);
     imgLink.appendChild(img);
     outerDiv.appendChild(imgLink);
 
     outerDiv.appendChild(document.createElement("BR"))//creates a line break to align elements properly
 
-    var para = createParagraph("cellDesc","Counter Strike",k);
+    var para = createParagraph("cellDesc",listOfGames[k].gameName,k);
     outerDiv.appendChild(para);
 
     document.getElementById("pageGrid").appendChild(outerDiv);

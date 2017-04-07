@@ -19,24 +19,24 @@ function populateSideBar(num){
   }
 }
 
-function populatePageList(num){
-  for(var k = 0;k<num;k++){
+function populatePageList(array){
+  for(var k = 0;k<array.length;k++){
     var outerDiv = createDiv("listNode",k);
     var imgNode = createDiv("imageNode",k);
     outerDiv.appendChild(imgNode);
 
     var imgLink = createLink("imgLink","../accountPage/indexP.html",k);
-    var img = createImage("listImage","assets/testAvatar.png",k);
+    var img = createImage("listImage","..\\accountPage\\"+array[k].picture,k);
     imgLink.appendChild(img);
     imgNode.appendChild(imgLink);
 
-    var para = createParagraph("listUSR","USERNAME",k);
+    var para = createParagraph("listUSR",array[k].username,k);
     imgNode.appendChild(para);
 
     var info = createDiv("listInfo",k);
     outerDiv.appendChild(info);
 
-    var h2 = createHeader("listInfoP","AD TITLE",2,k);
+    var h2 = createHeader("listInfoP",array[k].gameName,2,k);
     info.appendChild(h2);
 
     var but = createButton("applyButton","Apply",k);

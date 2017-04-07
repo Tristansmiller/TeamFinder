@@ -1,17 +1,18 @@
-function populateFriends(num){
-  for(var k=1;k<=num;k++){
+function populateFriends(friendslist){
+  for(var k=1;k<=friendslist.length;k++){
     var friendBlock = createDiv("friend-block",k);
 
     var leftQuarterDiv = createDiv("left-quarter-block",k);
     friendBlock.appendChild(leftQuarterDiv);
 
-    var avatarImg = createImage("friend-avatar","assets/testAvatar.png",k);
+    var avatarImg = createImage("friend-avatar",friendslist[k].picture,k);
     leftQuarterDiv.appendChild(avatarImg);
 
-    var friendName = createParagraph("friend-name","TEST NAME",k);
-    leftQuarterDiv.appendChild(friendName);
+    var friendName = createParagraph("friend-name",friendslist[k].username,k);
+    var friendBio = createParagraph("friend-bio",friendslist[k].description,k);
 
-    var friendBio = createParagraph("friend-bio","TEST BIO",k);
+    leftQuarterDiv.appendChild(friendName);
+    friendBlock.appendChild(leftQuarterDiv);
     friendBlock.appendChild(friendBio);
 
     document.getElementById("friends-list").appendChild(friendBlock);
