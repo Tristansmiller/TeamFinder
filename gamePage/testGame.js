@@ -26,7 +26,7 @@ function populatePageList(num){
     outerDiv.appendChild(imgNode);
 
     var imgLink = createLink("imgLink","../accountPage/indexP.html",k);
-    var img = createImage("listImage","assets/test.png",k);
+    var img = createImage("listImage","assets/testAvatar.png",k);
     imgLink.appendChild(img);
     imgNode.appendChild(imgLink);
 
@@ -45,6 +45,7 @@ function populatePageList(num){
     document.getElementById("pageList").appendChild(outerDiv);
   }
 }
+
 function createDiv(name,num){
   var div=document.createElement("DIV");
 

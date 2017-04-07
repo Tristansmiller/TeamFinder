@@ -6,7 +6,7 @@ function populateFriends(num){
     friendBlock.appendChild(leftQuarterDiv);
 
     var avatarImg = createImage("friend-avatar","assets/testAvatar.png",k);
-    leftQuarterDiv.appendChild(avatarimg);
+    leftQuarterDiv.appendChild(avatarImg);
 
     var friendName = createParagraph("friend-name","TEST NAME",k);
     leftQuarterDiv.appendChild(friendName);
@@ -30,7 +30,7 @@ function createDiv(name,num){
   div.setAttributeNode(att);
 
   if(name=="friend-block")
-    div.style.top=(""+(27.5*(k-1)+5)+"%");
+    div.style.top=(""+(27.5*(num-1)+5)+"%");
   return div;
 }
 
