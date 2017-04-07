@@ -1,0 +1,63 @@
+<!--/************************************************************************/
+/*
+/* FILE NAME: friendProfile.html
+/* 
+/* DESCRIPTION: 
+/*
+/* REFERENCE:
+/*
+/* DATE BY CHANGE REF DESCRIPTION
+/* =========== ============= ================ ===================
+/* 1/1/2014 Robert Brown 72CF: LS Created the class
+/* 1/14/2014 Claire Johns 72CF: LE Added method xyz
+/*
+/*
+/*
+/************************************************************************/-->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Team Finder</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="friendProfile.css">
+  <style>
+  </style>
+</head>
+
+<body id="profileBody">
+  <div class="left-block">
+    <div class="top-block">
+        <div class="playerInfo">
+            <img id="playerIMG" src="assets/testAvatar.png"/>
+            <p id="playerName">Name</p>
+            <img id="playerRating" src="assets/testRatings.png"/>
+        </div>
+        <div class="playerBio">
+          <p id="playerBio">BIO</p>
+          <p id="bioFiller">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Aliquam lobortis tincidunt risus, ut tempor nibh lobortis vitae. Ut facilisis 
+            auctor finibus. Fusce non ligula a nibh porttitor faucibus. Nullam tempor efficitur 
+            diam, et facilisis sapien. Nulla facilisi. Donec ante purus, feugiat non lacus non, 
+            dictum imperdiet nulla. Integer scelerisque leo vitae dui fermentum sollicitudin. 
+            Proin tempor cursus enim, at dictum felis fermentum at. Aliquam erat volutpat. 
+            Suspendisse vel urna sed nulla ultrices venenatis. Duis semper justo ut fringilla rhoncus. 
+            Nunc cursus dui iaculis odio rhoncus egestas. Sed nec neque elementum, porta enim a, molestie ante.</p>
+        </div>
+    </div>
+    <div class="bot-block">
+      <p id="gamesFollowed">Games Followed</p>
+    </div>
+  </div>
+  <div class="right-block">
+    <p id="recentAds">Recent Ads</p>
+    <div class="playerAds" id="playerAds">
+      <script language="javascript" src="friendProfile.js" onload="populateMyAds(10);"></script>
+    </div>
+  </div>
+</body>
+</html>

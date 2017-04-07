@@ -105,6 +105,7 @@ div.right-quarter-block{
   width:25%;
   height:100%;
 }
+
 #recentAdsHeader{
   position:absolute;
   top:7%;
@@ -294,7 +295,8 @@ div.pageGrid{
   flex-wrap:wrap;
   justify-content: center;
   overflow:auto;
-  position:fixed;                                                                                                                                 overflow:auto;
+  position:fixed;                                                                                                                                
+  overflow:auto;
   height:87%;
   top:125px;
   left:200px;
@@ -318,7 +320,8 @@ div.game-list-block{
   flex-wrap:wrap;
   justify-content: center;
   overflow:auto;
-  position:fixed;                                                                                                                                 overflow:auto;
+  position:fixed;                                                                                                                                 
+  overflow:auto;
   width:100%;
   height:85%;
   left:0%;
@@ -350,18 +353,6 @@ img.cellImage{
 img.cellImage:hover {
   box-shadow: 0px 0px 30px rgb(204,153,51);
 }
-
-/*
-@keyframes hoverImage{
-  from{box-shadow: 0px 0px 0px;}
-  to{box-shadow: 0px 0px 30px #273c5e;}
-}
-img.cellImage:hover{
-  animation-name:hoverImage;
-  animation-duration:.5s;
-  animation-fill-mode:forwards;
-}*/
-
 
 p.cellDesc{
   margin:auto;
