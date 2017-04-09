@@ -1,0 +1,102 @@
+#profileBody{
+  background-color: rgba(39,60,94,1);
+}
+div.left-block {
+  position: absolute; 
+  height:100%;
+  width:70%;
+  left:0px;
+}
+div.top-block {
+  position:absolute;
+  top:0px;
+  width:100%;
+  height:40%;
+}
+div.playerInfo {
+  position:absolute;
+  height:100%;
+  width:19%;
+}
+#playerIMG {
+  height: auto;
+  width: 100%;
+  border: 5px solid rgb(204,153,51);
+  border-radius: 8px;
+}
+#playerName {
+  color: white;
+  text-align: center;
+}
+#playerRating {
+  position:absolute;
+  width:50%;
+  height:auto;
+  left:25%;
+}
+div.playerBio {
+  position: absolute;
+  height:100%;
+  width:79%;
+  right: 5px;
+  border: 5px solid rgb(204,153,51);
+  border-radius: 8px;
+  background-color:rgb(55,59,68);
+}
+#playerBio {
+  color: white;
+  background:rgb(204,153,51);
+  font-size: 20px;
+}
+#bioFiller {
+  position:absolute;
+  color:white;
+  left: 5px;
+}
+div.bot-block {
+  position:absolute;
+  bottom:0px;
+  height:59%;
+  width:99%;
+  right:5px;
+  border: 5px solid rgb(204,153,51);
+  border-radius: 8px;
+  background-color:rgb(55,59,68);
+}
+#gamesFollowed {
+  color: white;
+  background:rgb(204,153,51);
+  font-size: 20px;
+}
+div.right-block {
+  position:absolute;
+  height:100%;
+  width: 30%;
+  right:0px;
+  border: 5px solid rgb(204,153,51);
+  border-radius: 8px;
+  background-color:rgb(55,59,68);
+}
+div.playerAds {
+  position:absolute;
+  display:flex;
+  flex-wrap: wrap;
+  overflow:auto;
+  top:30px;
+  height:95%;
+  width:100%;
+}
+div.playerAd-block {
+  position:relative;
+  width:100%;
+  height:25%;
+  background-color:rgb(40,44,52);
+  border:5px solid rgb(39,60,94);
+  border-radius:10px;
+  color:rgb(255,255,255);
+}
+#recentAds {
+  color: white;
+  background:rgb(204,153,51);
+  font-size: 20px;
+}

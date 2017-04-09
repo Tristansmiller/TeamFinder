@@ -24,26 +24,26 @@
 	} else {
 		echo "0 results";
 	}
-	
+
 	// Attach the number of corresponding ads to each game
 	$i=0;
-	for($x=0;$x<sizeof($listOfGames);$x++){ 
+	for($x=0;$x<sizeof($listOfGames);$x++){
 		$sql = "SELECT COUNT(*) FROM ad WHERE gameID = ".$listOfGames[$i]['gameID'];
-		$queryResult = $conn->query($sql);		
+		$queryResult = $conn->query($sql);
 		if($queryResult->num_rows>0){
 			while($row=$queryResult->fetch_assoc()){
 				$listOfGames[$x]['numberOfAds']=$row['COUNT(*)'];
 				$i=$i+1;
 			}
-		}		
+		}
 	}
-	
+
 	// Sort the array of games in descending order from the number of ads
 	usort($listOfGames, function($a, $b) {
 		return $b['numberOfAds'] - $a['numberOfAds'];
 	});
-	
-	
+
+
 	// Get the list of the user's ads
 	$i=0;
 	$userAds = [];
@@ -119,7 +119,7 @@
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
-                      <!-- fixed extra space in "login"--> 
+                      <!-- fixed extra space in "login"-->
                       <button id="login-submit" type="submit" class="btn btn-success btn-block" >Login</button>
                   </form>
                 </div>
@@ -142,11 +142,11 @@
     </div>
     <div class="pageGrid" id="pageGrid">
       <!-- Get the array of games to be used for populatePageGrid() -->
-	  <script type="text/javascript"> 
-		var listOfGames = <?= json_encode($listOfGames) ?>; 
+	  <script type="text/javascript">
+		var listOfGames = <?= json_encode($listOfGames) ?>;
 		var userAds = <?= json_encode($userAds) ?>;
-	  </script> 
-      <script language="javascript" src="homeJava.js" onload="populatePageGrid(listOfGames);populateSideBar(userAds);"></script>
+	  </script>
+      <script language="javascript" src="test.js" onload="populatePageGrid(listOfGames);populateSideBar(userAds);"></script>
     </div>
   </div>
 </body>

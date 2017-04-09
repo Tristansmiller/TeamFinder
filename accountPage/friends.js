@@ -1,51 +1,16 @@
-function populateFriends(friendsList){
-  for(var k=0;k<=friendsList.length;k++){
-    var friendBlock=document.createElement("DIV");
-    var att = document.createAttribute("class");
-    att.value="friend-block";
-    friendBlock.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value=("friend-block"+k);
-    friendBlock.setAttributeNode(att);
-    friendBlock.style.top=(""+(27.5*(k-1)+5)+"%")
+function populateFriends(friendslist){
+  for(var k=1;k<=friendslist.length;k++){
+    var friendBlock = createDiv("friend-block",k);
 
-    var leftQuarterDiv = document.createElement("DIV");
-    att = document.createAttribute("class");
-    att.value = "left-quarter-block";
-    leftQuarterDiv.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value = ("left-quarter-block"+k);
-    leftQuarterDiv.setAttributeNode(att);
+    var leftQuarterDiv = createDiv("left-quarter-block",k);
+    friendBlock.appendChild(leftQuarterDiv);
 
-    var avatarImg = document.createElement("IMG");
-    att = document.createAttribute("class");
-    att.value = "friend-avatar";
-    avatarImg.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value = ("friend-avatar"+k);
-    avatarImg.setAttributeNode(att);
-    att = document.createAttribute("src");
-    att.value = (friendsList[k].picture);
-    avatarImg.setAttributeNode(att);
-
-    var friendName = document.createElement("P");
-    att = document.createAttribute("class");
-    att.value = "friend-name";
-    friendName.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value = ("friend-name"+k);
-    friendName.appendChild(document.createTextNode(friendsList[k].username));
-
-    var friendBio = document.createElement("P");
-    att = document.createAttribute("class");
-    att.value = "friend-bio";
-    friendBio.setAttributeNode(att);
-    att = document.createAttribute("id");
-    att.value = ("friend-bio"+k);
-    friendBio.setAttributeNode(att);
-    friendBio.appendChild(document.createTextNode(friendsList[k].description));
-
+    var avatarImg = createImage("friend-avatar",friendslist[k].picture,k);
     leftQuarterDiv.appendChild(avatarImg);
+
+    var friendName = createParagraph("friend-name",friendslist[k].username,k);
+    var friendBio = createParagraph("friend-bio",friendslist[k].description,k);
+
     leftQuarterDiv.appendChild(friendName);
     friendBlock.appendChild(leftQuarterDiv);
     friendBlock.appendChild(friendBio);
@@ -66,7 +31,7 @@ function createDiv(name,num){
   div.setAttributeNode(att);
 
   if(name=="friend-block")
-    div.style.top=(""+(27.5*(k-1)+5)+"%");
+    div.style.top=(""+(27.5*(num-1)+5)+"%");
   return div;
 }
 

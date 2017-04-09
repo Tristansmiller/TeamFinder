@@ -9,17 +9,16 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
-	
-	// Start the php session
-	session_start();
+
+
 	//Get the information about the game
 	$sql = "SELECT * FROM game WHERE gameID = ".$_GET['id'];
-	$queryResult = $conn->query($sql);
-	
+	$result = $conn->query($sql);
+
 	STATIC $i=0;
-	if ($queryResult->num_rows > 0) {
+	if ($result->num_rows > 0) {
 		// output data of each row; there should exactly 1 row
-		while($row = $queryResult->fetch_assoc()) {
+		while($row = $result->fetch_assoc()) {
 			$game[$i]= $row;
 			$i=$i+1;
 		}
@@ -29,58 +28,39 @@
 
 	//Select all of the ads for the game
 	$sql = "SELECT * FROM ad WHERE gameID = '".$game[0]['gameID']."'";
-	$queryResult = $conn->query($sql);
+	$result = $conn->query($sql);
 	/* Useful debugging script to check if the SQL is correct
-	if (!$queryResult) {
+	if (!$result) {
 		trigger_error('Invalid query: ' . $conn->error);
 	}
 	*/
 	$adsFound = false;
 	STATIC $j=0;
-	
-	if ($queryResult->num_rows > 0) {
+
+	if ($result->num_rows > 0) {
 		// output data of each row
-		while($row = $queryResult->fetch_assoc()) {
+		while($row = $result->fetch_assoc()) {
 			$adArray[$j]= $row;
-			$j=$j+1;				
+			$j=$j+1;
 		}
 		$adsFound = true;
 	} else {
 		echo "0 results";
 	}
-	
+
 	//Find who the ads belong to
 	if($adsFound==true){
 		for($x=0;$x<sizeof($adArray);$x++){
 			$sql = "SELECT username,picture FROM users INNER JOIN ad ON users.userID=ad.userID WHERE ad.userID = ".$adArray[$x]['userID'];
-			$queryResult = $conn->query($sql);		
-			if($queryResult->num_rows>0){
-				while($row=$queryResult->fetch_assoc()){
+			$result = $conn->query($sql);
+			if($result->num_rows>0){
+				while($row=$result->fetch_assoc()){
 					$adArray[$x]['username']=$row['username'];
 					$adArray[$x]['picture']=$row['picture'];
 				}
-			}		
-		}
-	}
-	
-	// Get the list of the user's ads
-	$i=0;
-	$userAds = [];
-	if(!empty($_SESSION["currentUser"])){
-		$sql = "SELECT * FROM ad WHERE userID = '".$_SESSION["currentUser"]."'";
-		$queryResult = $conn->query($sql);
-		STATIC $i=0;
-		if ($queryResult->num_rows > 0) {
-			// output data of each row
-			while($row = $queryResult->fetch_assoc()) {
-				$userAds[$i]= $row;
-				$i++;
 			}
-		} else {
-			echo "0 results";
 		}
-	}
-	
+	}print_r($adArray);
 	$conn->close();
 ?>
 <html>
@@ -93,7 +73,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <!-- Latest compiled JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="gameStylePage.css">
+  <link rel="stylesheet" type="text/css" href="stylePage.css">
   <style>
   </style>
 </head>
@@ -107,8 +87,7 @@
       <a id="my-ads-link" href="#" class="btn btn-primary btn-block">My Ads</a>
     </div>
     <div class="sideFeed" id="sideFeed">
-	  <script language="javascript"> var userAds = <?php echo json_encode($userAds)?>; </script>
-      <script language="javascript" src="gamejs2.js" onload="populateSideBar(userAds)"></script>
+      <script language="javascript" src="test.js" onload="populateSideBar(15)"></script>
     </div>
   </div>
   <div class="pageBody">
@@ -123,14 +102,14 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-body" style="padding:40px 50px;">
-                  <form role="form" action="login.php?id=<?= $_GET['id'] ?>" method="post">
+                  <form role="form">
                     <div class="form-group">
                       <label for="usrname">Username</label>
-                      <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter email">
+                      <input type="text" class="form-control" id="usrname" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                       <label for="psw">Password</label>
-                      <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password">
+                      <input type="password" class="form-control" id="psw" placeholder="Enter password">
                     </div>
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
@@ -146,6 +125,39 @@
               </div>
             </div>
           </div>
+
+          <!--Trigger the create ad modal with this button-->
+        <button type="button" id="createButton" class="btn btn-info btn" data-toggle="modal" data-target="#createModal" data-backdrop="false">Create Ad</button>
+
+        <!-- Create Ad Modal -->
+        <div class="modal fade" id="createModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content create-modal-content">
+                <div class="modal-body" style="padding:40px 50px;">
+                  <div class="imageNode">
+                    <img class="listImage" src="assets/test.png">
+                    <p class="listUSR">USERNAME</p>
+                  </div>
+                  <div class="listInfo">
+                    <div class="form-group ad-desc-form">
+                      <label for="adTitle">Ad Title</label>
+                      <input class="form-control" id="adTitle" placeholder="Enter a title.">
+                      <br>
+                      <label for="adDesc">Ad Description</label>
+                      <textarea class="form-control" row="50" col="50" id="adDesc" placeholder="Enter a description."></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button id="modal-close-button" type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button id="createAdButton" type="submit" class="btn btn-default btn-primary pull-right">Create</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
           <a href="../homePage/index.php">
         <img id="titleImage" src="assets/titleImage3.png" >
         </a>
@@ -159,10 +171,10 @@
       </div>
     <div class="filter">
     </div>
-    <div class="pageList" id="pageList">  
+    <div class="pageList" id="pageList">
 	  <!-- Set the array of ads as a global variable to call in populatePageList() -->
 	  <script language="javascript"> var adArray = <?php echo json_encode($adArray)?>; </script>
-	  <script src="gamejs.js" type="text/javascript" onload="populatePageList(adArray)"></script>
+	  <script src="testGame.js" type="text/javascript" onload="populatePageList(adArray)"></script>
     </div>
   </div>
 </body>
