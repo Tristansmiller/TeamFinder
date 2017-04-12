@@ -1,20 +1,16 @@
-function populateFriends(num){
-  for(var k=1;k<=num;k++){
-    var friendBlock = createDiv("friend-block",k);
+function populatePageGrid(num){
+  for(var k = 0;k<num;k++){
+    var outerDiv = createDiv("gridCell",k);
 
-    var leftQuarterDiv = createDiv("left-quarter-block",k);
-    friendBlock.appendChild(leftQuarterDiv);
+    var img = createImage("cellImage","assets/test.png",k);
+    outerDiv.appendChild(img);
 
-    var avatarImg = createImage("friend-avatar","assets/testAvatar.png",k);
-    leftQuarterDiv.appendChild(avatarimg);
+    outerDiv.appendChild(document.createElement("BR"))//creates a line break to align elements properly
 
-    var friendName = createParagraph("friend-name","TEST NAME",k);
-    leftQuarterDiv.appendChild(friendName);
+    var para = createParagraph("cellDesc","TEST DESC",k);
+    outerDiv.appendChild(para);
 
-    var friendBio = createParagraph("friend-bio","TEST BIO",k);
-    friendBlock.appendChild(friendBio);
-
-    document.getElementById("friends-list").appendChild(friendBlock);
+    document.getElementById("favorite-games-list").appendChild(outerDiv);
   }
 }
 
@@ -29,8 +25,8 @@ function createDiv(name,num){
   att.value=(name+""+num);
   div.setAttributeNode(att);
 
-  if(name=="friend-block")
-    div.style.top=(""+(27.5*(k-1)+5)+"%");
+  if(name=="listNode")
+    div.style.top=""+(250*num)+"px";
   return div;
 }
 

@@ -17,13 +17,14 @@
   <div class="side">
     <div class="topSideOptions">
       <div id="account-friends-group" class="btn-group btn-group-justified">
-        <a id="account-link" href="../accountPage/index.html" class="btn btn-primary">Account</a>
-        <a id="friends-link" href="#" class="btn btn-primary">Friends</a>
+        <a id="account-link" href="../accountPage/indexP.html" class="btn btn-primary">Account</a>
+        <a id="friends-link" href="../accountPage/indexF.html" class="btn btn-primary">Friends</a>
       </div>
-      <a id="my-ads-link" href="#" class="btn btn-primary btn-block">My Ads</a>
+      <a id="my-ads-link" href="../accountPage/indexM.html" class="btn btn-primary btn-block">My Ads</a>
     </div>
     <div class="sideFeed" id="sideFeed">
-      <script language="javascript" src="./test.js" onload="populateSideBar(15)"></script>
+    </div>
+    <div class="currentUser" id="currentUserBox">
     </div>
   </div>
   <div class="pageBody">
@@ -52,7 +53,7 @@
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
-                      <!-- fixed extra space in "login"--> 
+                      <!-- fixed extra space in "login"-->
                       <button id="login-submit" type="submit" class="btn btn-success btn-block">Login</button>
                   </form>
                 </div>
@@ -66,15 +67,22 @@
             </div>
           </div>
         <img id="titleImage" src="assets/titleImage3.png">
+         <input id = "searchBar" 
+              type = "text" 
+              name = "search" 
+       placeholder = "Search.." 
+         onkeyup = "searchPage(100,document.getElementById('searchBar').value);"
+         />
         <div id="titleImgBox">
         </div>
         <div id="titleLoginBox">
         </div>
       </div>
     <div class="filter">
+
     </div>
     <div class="pageGrid" id="pageGrid">
-      <script language="javascript" src="./test.js" onload="populatePageGrid(100)"></script>
+      <script language="javascript" src="./test.js" onload="populatePageGrid(100);populateSideBar(15);loggedAs('Remy');"></script>
     </div>
   </div>
 </body>

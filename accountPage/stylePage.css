@@ -1,3 +1,6 @@
+::-webkit-scrollbar {
+  display:none;
+}
 div.side{
   position:fixed;
   left:0px;
@@ -270,11 +273,11 @@ a.modal-footer-link:hover{
   background-color: rgb(55,59,68);
   color:rgb(255,255,255);
 }
-#login-submit{
+.submit{
   background-color: rgb(39,60,94);
   border-color: rgb(39,60,94);
 }
-#login-submit:hover{
+.submit:hover{
   background-color:rgb(204,153,51);
 
 }
@@ -295,6 +298,31 @@ div.pageGrid{
   height:87%;
   top:125px;
   left:200px;
+  background-clip:content-box;
+}
+#favoriteGamesHeader{
+  position:absolute;
+  width:25%;
+  height:10%;
+  top:0%;
+  left:3%;
+  padding-top:30px;
+  font-size:30px;
+  border-bottom:3px solid rgb(255,255,255);
+  border-radius:3px;
+  color:white;
+  text-align:justify;
+}
+div.game-list-block{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content: center;
+  overflow:auto;
+  position:fixed;                                                                                                                                 overflow:auto;
+  width:100%;
+  height:85%;
+  left:0%;
+  top:15%;
   background-clip:content-box;
 }
 div.gridCell{
@@ -367,9 +395,9 @@ img.testImage{
 }
 .friend-block{
   position:absolute;
-  left:0%;
-  height:20%;
-  width:80%;
+  left:25%;
+  height:25%;
+  width:50%;
   background-color:rgb(40,44,52);
   border:5px solid rgb(39,60,94);
   border-radius:10px;
@@ -399,4 +427,108 @@ img.testImage{
   left:0%;
   padding-top:5%;
   text-align:center;
+}
+
+#myAdsHeader{
+  position:absolute;
+  width:25%;
+  height:10%;
+  top:0%;
+  left:3%;
+  padding-top:30px;
+  font-size:30px;
+  border-bottom:3px solid rgb(255,255,255);
+  border-radius:3px;
+  color:white;
+  text-align:justify;
+}
+.ad-list-block{
+  position:absolute;
+  width:100%;
+  height:85%;
+  left:0%;
+  top:15%;
+}
+.ad-block{
+  position:absolute;
+  left:25%;
+  height:25%;
+  width:50%;
+  background-color:rgb(40,44,52);
+  border:5px solid rgb(39,60,94);
+  border-radius:10px;
+  color:rgb(255,255,255);
+}
+.ad-game-image{
+  position:absolute;
+  width:100%;
+  height:75%;
+  top:0%;
+  left:0%;
+}
+.ad-game-name{
+  position:absolute;
+  width:100%;
+  height:25%;
+  top:75%;
+  left:0%;
+  padding-top:5%;
+  text-align:center;
+}
+.ad-description{
+  position:absolute;
+  width:75%;
+  height:100%;
+  top:0%;
+  left:25%;
+  border-left:5px solid rgb(204,153,51);
+  padding:5px;
+}
+#settingsHeader{
+  position:absolute;
+  width:25%;
+  height:10%;
+  top:0%;
+  left:3%;
+  padding-top:30px;
+  font-size:30px;
+  border-bottom:3px solid rgb(255,255,255);
+  border-radius:3px;
+  color:white;
+  text-align:justify;
+}
+.settings-container{
+  position:absolute;
+  width:60%;
+  height:85%;
+  left:5%;
+  top:15%;
+  background-color:rgb(40,44,52);
+}
+.setting-block{
+  width:100%;
+  left:0%;
+  border-bottom:3px solid rgb(55,59,68);
+  color:rgb(255,255,255);
+  border-radius:3px;
+  padding:25px;
+}
+#bioSetting{
+  height:75%;
+  overflow:visible;
+}
+
+#settings-submit{
+  margin:25px;
+  width:25%;
+}
+.tall{
+  height:30%;
+}
+.short{
+  height:15%;
+}
+.form-control{
+  background-color: rgb(55,59,68);
+  color: rgb(255,255,255);
 }

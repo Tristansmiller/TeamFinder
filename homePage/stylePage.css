@@ -1,3 +1,6 @@
+::-webkit-scrollbar{
+  display:none;
+}
 div.side{
   position:fixed;
   left:0px;
@@ -26,6 +29,9 @@ a.btn-primary{
   color:rgb(255,255,255);
 }
 a.btn-primary:hover{
+  background-color:rgb(204,153,51);
+}``
+a.btn-primary:focus{
   background-color:rgb(204,153,51);
 }
 
@@ -122,8 +128,8 @@ a.modal-footer-link:hover{
   color: rgb(204,153,51)
 }
 #modal-close-button{
-  background-color:rgb(204,28,51);
-  border-color:rgb(204,28,51);
+  background-color:rgb(168,21,21);
+  border-color:rgb(168,21,21);
 }
 #usrname{
   background-color: rgb(55,59,68);
@@ -184,6 +190,30 @@ img.cellImage{
 
 img.cellImage:hover {
   box-shadow: 0px 0px 30px rgb(204,153,51);
+}
+
+#searchBar {
+    position:absolute;
+    top:40px;
+    left:65%;
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid rgb(204,153,51);
+    border-radius: 7px;
+    font-size: 16px;
+    color: rgb(204,153,51);
+    background-color: transparent;
+    background-image: url("assets/search.png");
+    background-size: 25px 25px;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    transition: width 0.4s ease-in-out;
+}
+
+#searchBar:focus {
+    width: 20%;
+    background-color: rgb(55,59,68);
 }
 
 /*
