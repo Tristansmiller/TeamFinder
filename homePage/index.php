@@ -1,3 +1,70 @@
+<?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "teamfinder";
+	// Create connection
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	// Check connection
+	if ($conn->connect_error) {
+		die("Connection failed: " . $conn->connect_error);
+	}
+	// Start the php session
+	session_start();
+	// Select all games from the database
+	$sql = "SELECT * FROM game";
+	$queryResult = $conn->query($sql);
+	STATIC $i=0;
+	if ($queryResult->num_rows > 0) {
+		// output data of each row
+		while($row = $queryResult->fetch_assoc()) {
+			$listOfGames[$i]= $row;
+			$i++;
+		}
+	} else {
+		echo "0 results";
+	}
+
+	// Attach the number of corresponding ads to each game
+	$i=0;
+	for($x=0;$x<sizeof($listOfGames);$x++){
+		$sql = "SELECT COUNT(*) FROM ad WHERE gameID = ".$listOfGames[$i]['gameID'];
+		$queryResult = $conn->query($sql);
+		if($queryResult->num_rows>0){
+			while($row=$queryResult->fetch_assoc()){
+				$listOfGames[$x]['numberOfAds']=$row['COUNT(*)'];
+				$i=$i+1;
+			}
+		}
+	}
+
+	// Sort the array of games in descending order from the number of ads
+	usort($listOfGames, function($a, $b) {
+		return $b['numberOfAds'] - $a['numberOfAds'];
+	});
+
+
+	// Get the list of the user's ads
+	$i=0;
+	$userAds = [];
+	if(!empty($_SESSION["currentUser"])){
+		$sql = "SELECT * FROM ad WHERE userID = '".$_SESSION["currentUser"]."'";
+		$queryResult = $conn->query($sql);
+		STATIC $i=0;
+		if ($queryResult->num_rows > 0) {
+			// output data of each row
+			while($row = $queryResult->fetch_assoc()) {
+				$userAds[$i]= $row;
+				$i++;
+			}
+		} else {
+			echo "0 results";
+		}
+	}
+
+	// Close the connection to the database
+	$conn->close();
+?>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -17,12 +84,13 @@
   <div class="side">
     <div class="topSideOptions">
       <div id="account-friends-group" class="btn-group btn-group-justified">
-        <a id="account-link" href="../accountPage/indexP.html" class="btn btn-primary">Account</a>
-        <a id="friends-link" href="../accountPage/indexF.html" class="btn btn-primary">Friends</a>
+        <a id="account-link" href="../accountPage/index.html" class="btn btn-primary">Account</a>
+        <a id="friends-link" href="#" class="btn btn-primary">Friends</a>
       </div>
-      <a id="my-ads-link" href="../accountPage/indexM.html" class="btn btn-primary btn-block">My Ads</a>
+      <a id="my-ads-link" href="#" class="btn btn-primary btn-block">My Ads</a>
     </div>
     <div class="sideFeed" id="sideFeed">
+      <script language="javascript" src="./test.js" onload="populateSideBar(15)"></script>
     </div>
   </div>
   <div class="pageBody">
@@ -42,16 +110,17 @@
                     <div class="form-group">
                       <label for="usrname">Username</label>
                       <!-- Marked both forms as required input -->
-                      <input type="text" class="form-control" id="usrname" placeholder="Enter username" required>
+                      <input type="text" class="form-control" name="username" id="usrname" placeholder="Enter username" required>
                     </div>
                     <div class="form-group">
                       <label for="psw">Password</label>
-                      <input type="password" class="form-control" id="psw" placeholder="Enter password" required>
+                      <input type="password" class="form-control" name="password" id="psw" placeholder="Enter password" required>
                     </div>
                     <div class="checkbox">
                       <label><input type="checkbox" value="">Remember me</label>
                     </div>
-                    <button id="login-submit" type="submit" class="btn btn-success btn-block submit"> Login</button>
+                      <!-- fixed extra space in "login"-->
+                      <button id="login-submit" type="submit" class="btn btn-success btn-block" >Login</button>
                   </form>
                 </div>
                 <div class="modal-footer">
@@ -72,36 +141,12 @@
     <div class="filter">
     </div>
     <div class="pageGrid" id="pageGrid">
-	    <?php
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "oneup";
-
-			// Create connection
-			$conn = new mysqli($servername, $username, $password, $dbname);
-			// Check connection
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
-			$sql = "SELECT name,picture FROM game";
-			$result = $conn->query($sql);
-			STATIC $i=0;
-			if ($result->num_rows > 0) {
-				// output data of each row
-				while($row = $result->fetch_assoc()) {
-					$array[$i]= $row;
-					$i=$i+1;
-				}
-			} else {
-				echo "0 results";
-			}
-		//	print_r($array);
-			$arrayJSON = json_encode($array);
-			$conn->close();
-		?>
-	  <script type="text/javascript"> var gameArray = <?php echo json_encode($array) ?>;</script>
-      <script language="javascript" src="./test.js" onload="populatePageGrid(gameArray);populateSideBar(15);"></script>
+      <!-- Get the array of games to be used for populatePageGrid() -->
+	  <script type="text/javascript">
+		var listOfGames = <?= json_encode($listOfGames) ?>;
+		var userAds = <?= json_encode($userAds) ?>;
+	  </script>
+      <script language="javascript" src="test.js" onload="populatePageGrid(listOfGames);populateSideBar(userAds);"></script>
     </div>
   </div>
 </body>

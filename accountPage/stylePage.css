@@ -105,6 +105,7 @@ div.right-quarter-block{
   width:25%;
   height:100%;
 }
+
 #recentAdsHeader{
   position:absolute;
   top:7%;
@@ -138,7 +139,7 @@ div.topSideOptions{
 body{
   background-color:rgb(55,59,68);
 }
-a.btn-primary{
+.btn-primary{
   background-color:rgb(39,60,94);
   border-color:rgb(39,60,94);
   color:rgb(255,255,255);
@@ -294,7 +295,8 @@ div.pageGrid{
   flex-wrap:wrap;
   justify-content: center;
   overflow:auto;
-  position:fixed;                                                                                                                                 overflow:auto;
+  position:fixed;                                                                                                                                
+  overflow:auto;
   height:87%;
   top:125px;
   left:200px;
@@ -318,7 +320,8 @@ div.game-list-block{
   flex-wrap:wrap;
   justify-content: center;
   overflow:auto;
-  position:fixed;                                                                                                                                 overflow:auto;
+  position:fixed;                                                                                                                                 
+  overflow:auto;
   width:100%;
   height:85%;
   left:0%;
@@ -350,18 +353,6 @@ img.cellImage{
 img.cellImage:hover {
   box-shadow: 0px 0px 30px rgb(204,153,51);
 }
-
-/*
-@keyframes hoverImage{
-  from{box-shadow: 0px 0px 0px;}
-  to{box-shadow: 0px 0px 30px #273c5e;}
-}
-img.cellImage:hover{
-  animation-name:hoverImage;
-  animation-duration:.5s;
-  animation-fill-mode:forwards;
-}*/
-
 
 p.cellDesc{
   margin:auto;
@@ -432,12 +423,11 @@ img.testImage{
 #myAdsHeader{
   position:absolute;
   width:25%;
-  height:10%;
+  height:5%;
   top:0%;
   left:3%;
-  padding-top:30px;
   font-size:30px;
-  border-bottom:3px solid rgb(255,255,255);
+  border-bottom:3px solid rgb(204,153,51);
   border-radius:3px;
   color:white;
   text-align:justify;
@@ -515,7 +505,9 @@ img.testImage{
 }
 #bioSetting{
   height:75%;
+  overflow-wrap:break-word;
   overflow:visible;
+  resize:none;
 }
 
 #settings-submit{
@@ -531,4 +523,162 @@ img.testImage{
 .form-control{
   background-color: rgb(55,59,68);
   color: rgb(255,255,255);
+}
+div.imageNode {
+  width:200px;
+  height:200px;
+  left:0%;
+  top:0%;
+  padding-bottom: 5px;
+}
+
+.listUSR {
+  width:150px;
+  padding-top:10px;
+  text-align: center;
+}
+
+div.listInfo {
+  position:absolute;
+  height: 90%;
+  width: 80%;
+  left:20%;
+  top:10%;
+}
+
+.h2 {
+  width:50px;
+}
+
+div.listNode:hover {
+  /*box-shadow: 0px 0px 30px rgb(204,153,51);*/
+  border-color: rgb(204,153,51)
+}
+
+.listImage{
+  border-radius:25px;
+  margin:auto;
+  width: 150px;
+  height: 150px;
+  border-collapse: collapse;
+
+}
+
+.listImage:hover {
+  animation-name:hoverImage;
+  animation-duration:.5s;
+  animation-fill-mode:forwards;
+  box-shadow: 0px 0px 30px rgb(204,153,51);
+}
+
+.applyButton {
+  position:absolute;
+  height:20%;
+  width:10%;
+  bottom:0%;
+  right:0%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+
+.applyButton:hover {
+    background-color:rgb(204,153,51);
+    border-color:rgb(204,153,51);
+}
+
+.applicantsButton {
+  position:absolute;
+  height:20%;
+  width:10%;
+  bottom:0%;
+  right:0%;
+  background-color: rgb(40,44,52);
+  color:rgb(255,255,255);
+  border-color:rgb(40,44,52);
+}
+
+.applicantsButton:hover {
+    background-color:rgb(204,153,51);
+    border-color:rgb(204,153,51);
+}
+
+@keyframes hoverImage{
+  from{box-shadow: 0px 0px 0px;}
+  to{box-shadow: 0px 0px 30px rgb(204,153,51);}
+}
+
+p.cellDesc{
+  margin:auto;
+}
+.ad-desc-form{
+  height:90%;
+  margin-left:15px;
+  margin-right:15px;
+}
+.form-control{
+  background-color: rgb(55,59,68);
+  color: rgb(255,255,255);
+}
+div.pageList{
+  position:absolute;                                                                                                                            overflow:auto;
+  height:100%;
+  width:100%;
+  top:0%;
+  left:0%;
+  background-clip:content-box;
+}
+div.listNode{
+  position:absolute;
+  height:250px;
+  width:100%;
+  left:0%;
+  padding-top:40px;
+  padding-left:50px;
+  padding-bottom: 40px;
+  padding-right:50px;
+  border:5px solid rgb(210,210,210);
+  color:rgb(255,255,255);
+  box-shadow: 0px 0px 0px rgb(204,153,51);
+  transition: box-shadow 0.1s linear
+}
+div.applicants-box{
+  position:absolute;
+  background-color:rgb(40,44,52);
+  overflow-y:scroll;
+  z-index:1000;
+  height:250px;
+  width:75%;
+  left:12.5%;
+  top:240px;
+  display:none;
+  border:5px solid rgb(204,153,51);
+  border-top: 5px solid rgb(55,59,68);
+  border-radius:5px;
+}
+div.applicant-entry{
+  display:block;
+  height:20%;
+  width:100%;
+}
+p.applicant-name{
+  position:absolute;
+  left:0%;
+  color:rgb(255,255,255);
+  text-align:left;
+}
+img.applicant-rating{
+  position:absolute;
+  right:40%;
+  height:10%;
+}
+button.applicant-approve{
+  position:absolute;
+  right:0%;
+}
+button.applicant-approve:hover{
+  background-color:rgb(76,175,80);
+}
+button.applicant-approve:active{
+  background-color:rgb(76,175,80);
 }

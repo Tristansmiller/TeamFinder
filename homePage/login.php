@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
   $servername = "localhost";
+=======
+	$servername = "localhost";
+>>>>>>> Jacob
 	$username = "root";
 	$password = "";
 	$dbname = "teamfinder";
@@ -9,6 +13,10 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> Jacob
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	// Select all games from the database
@@ -22,6 +30,7 @@
 		session_start();
 		$_SESSION['currentUser']=$currentUser;
 		header('Location: index.php');
+<<<<<<< HEAD
 	}
   else {
 		echo "0 results";
@@ -38,8 +47,33 @@
   $psw = test_input($_POST['psw']);
   */
   //echos for testing received input, remove later.
+=======
+	} else {
+		echo "0 results";
+	}
+	header('Location: index.php');
+	
+	
+
+/*
+function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+}
+$usrname = test_input($_POST['usrname']);
+$psw = test_input($_POST['psw']);
+*/
+       //echos for testing received input, remove later.
+	   
+>>>>>>> Jacob
 	echo "<h2>Wrong username and/or password:</h2>";
 	echo $username;
 	echo "<br>";
 	echo $password;
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> Jacob

@@ -19,6 +19,25 @@ function searchPage(num, filter) {
   }
 }
 
+function populatePageGrid(listOfGames){
+  for(var k = 0;k<listOfGames.length;k++){
+    var outerDiv = createDiv("gridCell",k);
+
+    var imgLink = createLink("cellImageLink","../gamePage/index.php?id="+listOfGames[k].gameID,k);
+    var img = createImage("cellImage","../assets/"+listOfGames[k].picture,k);
+    imgLink.appendChild(img);
+    outerDiv.appendChild(imgLink);
+
+    outerDiv.appendChild(document.createElement("BR"))//creates a line break to align elements properly
+
+    var para = createParagraph("cellDesc",listOfGames[k].gameName,k);
+    outerDiv.appendChild(para);
+
+    document.getElementById("pageGrid").appendChild(outerDiv);
+  }
+}
+
+/*
 function populatePageGrid(array){
   for(var k = 0;k<array.length;k++){
     var outerDiv = createDiv("gridCell",k);
@@ -35,7 +54,7 @@ function populatePageGrid(array){
 
     document.getElementById("pageGrid").appendChild(outerDiv);
   }
-}
+}*/
 
 function createDiv(name,num){
   var div=document.createElement("DIV");

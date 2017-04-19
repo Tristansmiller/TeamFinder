@@ -1,0 +1,426 @@
+CREATE DATABASE teamfinder;
+
+CREATE TABLE teamfinder.users(
+	userID int NOT NULL AUTO_INCREMENT,
+	username varchar(30) NOT NULL,
+	email varchar(75) NOT NULL,
+	pass varchar(55) NOT NULL,
+	picture varchar(60) NOT NULL DEFAULT "assets\testAvatar.png",
+	description varchar(255),
+	skill int,
+	friendliness int,
+	teamwork int,
+	average int,
+	startTime time,
+	endTime time,
+	Primary key(userID)
+)ENGINE = INNODB;
+
+CREATE TABLE teamfinder.game(
+    gameID int NOT NULL AUTO_INCREMENT,
+    gameName varchar(60) NOT NULL,
+    picture varchar(60) NOT NULL,
+    PRIMARY KEY(gameID)
+)ENGINE = INNODB;
+
+CREATE TABLE teamfinder.friend(
+	userIDA int NOT NULL,
+    userIDB int NOT NULL,
+    PRIMARY KEY(userIDA, userIDB),
+	FOREIGN KEY(userIDA) REFERENCES teamfinder.users(userID),
+    FOREIGN KEY(userIDB) REFERENCES teamfinder.users(userID)
+)ENGINE = INNODB;
+
+CREATE TABLE teamfinder.ad(
+	adID int NOT NULL AUTO_INCREMENT,
+    userID int NOT NULL,
+    gameID int NOT NULL,
+    description varchar(255),
+    startTime time,
+    endTime time,
+    creationTime datetime NOT NULL DEFAULT NOW(),
+    PRIMARY KEY(adID),
+    FOREIGN KEY(userID) REFERENCES teamfinder.users(userID),
+    FOREIGN KEY(gameID) REFERENCES teamfinder.game(gameID)
+)ENGINE = INNODB;
+
+CREATE TABLE teamfinder.team(
+	adID int NOT NULL,
+	userID int NOT NULL,
+	status varchar(11) NOT NULL DEFAULT "No response", 
+	PRIMARY KEY(adID),
+	FOREIGN KEY(adID) REFERENCES teamfinder.ad(adID),
+	FOREIGN KEY(userID) REFERENCES teamfinder.users(userID)
+)ENGINE = INNODB;
+
+CREATE TABLE teamfinder.rating(
+    senderID int NOT NULL,
+    recipientID int NOT NULL,
+    skill int NOT NULL,
+    friendliness int NOT NULL,
+    teamwork int NOT NULL,
+    PRIMARY KEY(senderID, recipientID),
+    FOREIGN KEY(senderID) REFERENCES teamfinder.users(userID),
+    FOREIGN KEY(recipientID) REFERENCES teamfinder.users(userID)
+)ENGINE = INNODB;
+
+CREATE TABLE teamfinder.friendRequest(
+    senderID int NOT NULL,
+    recipientID int NOT NULL,
+    status varchar(10) NOT NULL DEFAULT "incomplete",
+    PRIMARY KEY(senderID, recipientID),
+    FOREIGN KEY(senderID) REFERENCES teamfinder.users(userID),
+    FOREIGN KEY(recipientID) REFERENCES teamfinder.users(userID)
+)ENGINE = INNODB;
+
+CREATE TABLE teamfinder.gamesFollowed(
+	userID int NOT NULL,
+	gameID int NOT NULL,
+	PRIMARY KEY(userID, gameID),
+	FOREIGN KEY(userID) REFERENCES teamfinder.users(userID),
+	FOREIGN KEY(gameID) REFERENCES teamfinder.game(gameID)
+)ENGINE = INNODB;
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("BillyBob","billybob1@gmail.com","password","assets\testAvatar.png","Play a game",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("JaneBane","janegurll@gmail.com","password","assets\testAvatar.png","I love Overwatch",3,3,3,3,"13:00","18:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("DareDevil","RedDevil@gmail.com","password","assets\testAvatar.png","I'm a hero",5,5,5,5,"0:00","23:59");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("IronFist","DestroyTheHand@gmail.com","password","assets\testAvatar.png","My show was OK",4,4,4,4,"12:00","19:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Batman","DarkKnight@gmail.com","password","assets\testAvatar.png","I am darkness",5,5,5,5,"0:00","23:59");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Kirito","SAO@gmail.com","password","assets\testAvatar.png","Live a game",5,5,5,5,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Yuske","SpiritDetective@gmail.com","password","assets\testAvatar.png","Fight bad guys",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Ordinary","nothingspecial@gmail.com","password","assets\testAvatar.png","I just want to have fun",2,2,2,2,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("WTF","WTF@gmail.com","password","assets\testAvatar.png","WTF",3,3,3,3,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("DirtyDan","DirtyDan@gmail.com","password","assets\testAvatar.png","I'm Dirty Dan",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("420Blaze","pot@gmail.com","password","assets\testAvatar.png","Play a game and smoke",3,3,3,3,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Funguy","funguy@gmail.com","password","assets\testAvatar.png","I'm not a fungi",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Worst","Worst@gmail.com","password","assets\testAvatar.png","Play badly",1,1,1,1,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("waasdadsasd","assafddsa@gmail.com","password","assets\testAvatar.png","asddasdsaf",2,2,2,2,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("LetsPlay","LetsPlay@gmail.com","password","assets\testAvatar.png","Lets play a game",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Johnny","Bravo@gmail.com","password","assets\testAvatar.png","Hey baby",3,3,3,3,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("PeterPan","PeterPan@gmail.com","password","assets\testAvatar.png","To Neverland",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Tinkerbell","tinkerbell@gmail.com","password","assets\testAvatar.png","Fairy",3,3,3,3,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("ppppp","ppppp@gmail.com","password","assets\testAvatar.png","ppppp",5,5,5,5,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("SoccerFan","SoccerFan@gmail.com","password","assets\testAvatar.png","Play soccer",3,3,3,3,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("WhatAmIDoing","WhatAmIDoing@gmail.com","password","assets\testAvatar.png","Trying to figure this out",1,1,1,1,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("HateEverything","hate@gmail.com","password","assets\testAvatar.png","Fuck everyone",1,1,1,1,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("EverythingIsAwesome","good@gmail.com","password","assets\testAvatar.png","Legos",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Almost","done@gmail.com","password","assets\testAvatar.png","This is long",3,3,3,3,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("NoIdea","ideas@gmail.com","password","assets\testAvatar.png","Putting something down",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("AverageJoe","Average@gmail.com","password","assets\testAvatar.png","average",2,2,2,2,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("YesMan","SayYes@gmail.com","password","assets\testAvatar.png","Yes",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("Destroyer","GetGud@gmail.com","password","assets\testAvatar.png","Dark Souls",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("LetsDoIt","doit@gmail.com","password","assets\testAvatar.png","JUST DO IT!",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("finally","finally@gmail.com","password","assets\testAvatar.png","getting to the end",4,4,4,4,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("WhatADay","day@gmail.com","password","assets\testAvatar.png","Day is good",2,2,2,2,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("BillyBob2","billybob2@gmail.com","password","assets\testAvatar.png","Play a game too",3,3,3,3,"5:00","6:00");
+
+INSERT INTO teamfinder.users(`username`, `email`, `pass`, `picture`, `description`, `skill`, `friendliness`, `teamwork`, `average`, `startTime`, `endTime`) VALUES ("LightAtEnd","light@gmail.com","password","assets\testAvatar.png","Momma I made it",5,5,5,5,"5:00","6:00");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("CS:GO","assets\CSGO.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("World of Warcraft","assets\WoW.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Overwatch","assets\overwatch.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Battlefield 1","assets\battlefield1.jpeg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Titanfall 2","assets\titanfall2.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Rocket League","assets\rocketleague.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Tom Clancy's The Division","assets\thedivision.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Dota 2","assets\dota2.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("League of Legends","assets\leagueoflegends.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Hearthstone","assets\hearthstone.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Battlefield 4","assets\battlefield4.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Grand Theft Auto V","assets\gtav.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Tom Clancy's Ghost Recon Wildlands","assets\ghostreconwildlands.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("For Honor","assets\forhonor.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Tom Clancy's Rainbow Six Siege","assets\rainbowsixsiege.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Arma 3","assets\arma3.jpg");
+
+INSERT INTO teamfinder.game(`gameName`, `picture`) VALUES ("Left 4 Dead 2","assets\left4dead2.jpg");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (1,5,"Lets play","5:00","6:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (2,1,"I'm gonna win","5:00","7:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (2,8,"IDK what game this is","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (3,4,"Game. game game game.","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (4,1,"Love this game","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (5,8,"Rocket cars!","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (6,8,"Looking for someone to play casual doubles with.","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (7,10,"This should  be fun","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (1,1,"Playin playin","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (2,2,"Stuff to type","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (3,3,"THis is going to be the longest message. THis is going to be the longest message. THis is going to be the longest message. THis is going to be the longest message.","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (4,4,"Hi","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (5,5,"Bye","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (6,8,"What is happening","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (7,9,"I'm getting better","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (8,10,"This is easy","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (9,11,"ez no re","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (10,12,"gg","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (11,13,"gg ez","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (12,14,"I play too much","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (13,15,"I do not play enough","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (14,16,"get gud","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (15,17,"Great game","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (16,17,"what","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (17,17,"I'll find you","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (18,1,"I enjoy long walks on the beach","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (19,3,"Almost done","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (20,8,"Looking for someone to duel me","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (21,4,"looking for a mage","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (22,10,"looking for someone to teach me","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (23,2,"This should be good","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (24,10,"wut","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (25,1,"I only speak english","13:00","18:00");
+
+INSERT INTO teamfinder.ad(`userID`, `gameID`, `description`, `startTime`, `endTime`) VALUES (26,10,"This will work","13:00","18:00");
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,2);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (2,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (2,3);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (3,2);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (4,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,4);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (5,2);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (2,5);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (4,3);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (3,4);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (6,3);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (3,6);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (7,5);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (5,7);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (8,9);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (9,8);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (10,11);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (11,10);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (12,13);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (13,12);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (13,10);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (10,13);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (14,15);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (15,14);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (16,14);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (14,16);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (14,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,14);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (15,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,15);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (16,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,16);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (17,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,17);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (18,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,18);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (19,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,19);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (20,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,20);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (21,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,21);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (22,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,22);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (23,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,23);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (24,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,24);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (25,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,25);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (26,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,26);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (27,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,27);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (28,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,28);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (29,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,29);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (30,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,30);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (31,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,31);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (32,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,32);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (33,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,33);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (8,1);
+
+INSERT INTO teamfinder.friend(`userIDA`, `userIDB`) VALUES (1,8);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (1,1);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (1,12);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (8,8);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (8,17);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (2,5);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (2,3);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (3,10);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (4,8);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (5,2);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (8,3);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (9,11);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (10,12);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (11,13);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (12,1);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (12,2);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (13,14);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (14,15);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (15,16);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (16,17);
+
+INSERT INTO teamfinder.gamesfollowed(`userID`, `gameID`) VALUES (6,8);
