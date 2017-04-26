@@ -1,3 +1,14 @@
+/****************************************************************************************/
+/* FILE NAME: signup.php
+/*
+/* DESCRIPTION: PHP script for user account creation
+/*
+/* REFERENCE:
+/*
+/* DATE 		BY 			CHANGE REF  DESCRIPTION
+/* ======== ======= =========== =============
+/* 4/20/17  John Shipp          Created the file
+/****************************************************************************************/
 <?php
   $servername = "localhost";
 	$username = "root";
