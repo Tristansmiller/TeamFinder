@@ -1,3 +1,14 @@
+/****************************************************************************************/
+/* FILE NAME: index.php
+/*
+/* DESCRIPTION: Home page
+/*
+/* REFERENCE:
+/*
+/* DATE 		BY 			CHANGE REF  DESCRIPTION
+/* ======== ======= =========== =============
+/* 4/25/17  John Shipp          Updated login button to a dynamic login/logout.
+/****************************************************************************************/
 <?php
 	$servername = "localhost";
 	$username = "root";
@@ -92,9 +103,27 @@
   </div>
   <div class="pageBody">
     <div class="title">
-        <!-- Trigger the modal with a button -->
-        <button type="button" id="loginButton" class="btn btn-info btn" data-toggle="modal" data-target="#loginModal" data-backdrop="false">Login</button>
-
+			<script>
+			var user = '<?= $username ?>';
+			var content;
+			var type;
+			if (user == 'root') {
+				content = "Login";
+				type = "button";
+			}
+			else {
+				content = "Logout";
+				type = "submit";
+			}
+			window.onload = function() {
+				document.getElementById("loginButton").innerHTML=content;
+				document.getElementById("loginButton").type=type;
+			}
+			</script>
+			<form method="get" action="logout.php">
+				<!-- Trigger the modal with a button -->
+        <button type="button" id="loginButton" class="btn btn-info btn" data-toggle="modal" data-target="#loginModal" data-backdrop="false"></button>
+			</form>
         <!-- Modal -->
         <div class="modal fade" id="loginModal" role="dialog">
             <div class="modal-dialog">

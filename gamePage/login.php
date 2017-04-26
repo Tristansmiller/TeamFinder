@@ -8,7 +8,7 @@
 /* DATE 		BY 			CHANGE REF  DESCRIPTION
 /* ======== ======= =========== =============
 /* 4/19/17  John Shipp          Created the file
-/* 4/22/17  Jacob Farner				Added SQL conn verification	
+/* 4/22/17  Jacob Farner				Added SQL conn verification
 /****************************************************************************************/
 <?php
 	$servername = "localhost";
