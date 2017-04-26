@@ -21,10 +21,16 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
+	function clean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+	}
 	$username = $_POST['username'];
 	$password = $_POST['password'];
+	$cleanuser = clean($username);
+	$password = clean($password);
 	// Select all games from the database
-	$sql = "SELECT userID FROM teamfinder.users WHERE username = '".$username."' AND pass = '".$password."'";
+	$sql = "SELECT userID FROM teamfinder.users WHERE username = '".$cleanuser."' AND pass = '".$cleanpass."'";
 	$queryResult = $conn->query($sql);
 	if ($queryResult!=NULL) {
 		// output data of each row
@@ -39,17 +45,6 @@
 		echo "0 results";
 	}
 	header('Location: index.php');
-  /*
-  function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-  return $data;
-  }
-  $usrname = test_input($_POST['usrname']);
-  $psw = test_input($_POST['psw']);
-  */
-  //echos for testing received input, remove later.
 	} else {
 		echo "0 results";
 	}

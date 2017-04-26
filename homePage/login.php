@@ -8,7 +8,7 @@
 /* DATE 		BY 			CHANGE REF  DESCRIPTION
 /* ======== ======= =========== =============
 /* 4/19/17  John Shipp          Created the file
-/* 4/22/17  Jacob Farner				Added SQL conn verification	
+/* 4/22/17  Jacob Farner				Added SQL conn verification
 /****************************************************************************************/
 <?php
 	$servername = "localhost";
@@ -21,10 +21,17 @@
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	}
+	function clean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+
+   return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
+	}
 	$username = $_POST['username'];
 	$password = $_POST['password'];
+	$cleanuser = clean($username);
+	$password = clean($password);
 	// Select all games from the database
-	$sql = "SELECT userID FROM teamfinder.users WHERE username = '".$username."' AND pass = '".$password."'";
+	$sql = "SELECT userID FROM teamfinder.users WHERE username = '".$cleanuser."' AND pass = '".$cleanpass."'";
 	$queryResult = $conn->query($sql);
 	if ($queryResult!=NULL) {
 		// output data of each row
